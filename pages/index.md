@@ -1,8 +1,8 @@
 ---
-title: Get started with Markdoc
-description: How to get started with Markdoc
+title: manav.run
+description: manav.run
 ---
 
 # welcome to manav.run
 
-race blog coming soon
+I talk about my races.

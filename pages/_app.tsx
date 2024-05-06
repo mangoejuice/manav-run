@@ -72,7 +72,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TopNav>
-        <Link href="/races">Races</Link>
       </TopNav>
       <div className="page">
         <SideNav />
