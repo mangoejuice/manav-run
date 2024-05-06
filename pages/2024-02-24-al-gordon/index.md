@@ -1,5 +1,5 @@
 ---
-title: races
+title: first race
 ---
 
 # {% $markdoc.frontmatter.title %}

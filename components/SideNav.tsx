@@ -4,8 +4,11 @@ import Link from 'next/link';
 
 const items = [
   {
-    title: 'Races here',
-    links: [{href: '/races', children: 'races'}],
+    title: '',
+    links: [
+      {href: '/2024-02-24-al-gordon', children: 'Al Gordon 4M'}, 
+      {href: '/2024-03-03-wash-heights', children: 'Washington Heights Salsa, Blues and Shamrocks 5K'},
+    ],
   },
 ];
 
