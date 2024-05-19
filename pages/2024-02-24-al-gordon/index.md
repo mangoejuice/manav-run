@@ -1,5 +1,5 @@
 ---
-title: first race
+title: Al Gordon 4M
 ---
 
 # {% $markdoc.frontmatter.title %}
