@@ -78,6 +78,6 @@ title: RBC Brooklyn Half
     - I definitely lacked focus going onto Ocean Pkwy
 - Ended negotiating with myself a lot around mile 9
     - I think I could have run a bit longer (maybe even the whole race?), but it would not have been pleasant
-    - I always win my negotatiations on long runs, have to translate that to race day
+    - I always win my negotiations on long runs, have to translate that to race day
 - Still glad to have finished my first half marathon
 - I am motivated to get stronger for the next half marathon (and races after that)
