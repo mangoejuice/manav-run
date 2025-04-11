@@ -1,5 +1,5 @@
 ---
-title: Citizens Queenss 10k
+title: Citizens Queens 10k
 ---
 
 # {% $markdoc.frontmatter.title %}
