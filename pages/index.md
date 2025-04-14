@@ -1,6 +1,6 @@
 ---
 title: manav.run
-description: manav.run
+description: run baby run
 ---
 
 # welcome to manav.run
