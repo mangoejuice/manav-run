@@ -1,8 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 
-import { SideNav, TableOfContents, TopNav } from '../components';
+import { SideNav, TopNav, BlogSidebar } from '../components';
 
 import 'prismjs';
 // Import other Prism themes here
@@ -40,6 +39,10 @@ function collectHeadings(node, sections = []) {
   return sections;
 }
 
+function getRaceID(filePath) {
+  return filePath.split("/").filter(Boolean)[0]
+}
+
 export type MyAppProps = MarkdocNextJsPageProps
 
 export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
@@ -47,6 +50,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
 
   let title = TITLE;
   let description = DESCRIPTION;
+  let raceID = null;
   if (markdoc) {
     if (markdoc.frontmatter.title) {
       title = markdoc.frontmatter.title;
@@ -54,11 +58,15 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     if (markdoc.frontmatter.description) {
       description = markdoc.frontmatter.description;
     }
+    if (markdoc.file.path !== '/index.md') {
+      raceID = getRaceID(markdoc.file.path)
+    }
   }
 
-  const toc = pageProps.markdoc?.content
-    ? collectHeadings(pageProps.markdoc.content)
-    : [];
+  // // Removed SideNav for now
+  // const toc = pageProps.markdoc?.content
+  //   ? collectHeadings(pageProps.markdoc.content)
+  //   : [];
 
   return (
     <>
@@ -70,7 +78,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <meta name="description" content={description} />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
       </Head>
       <TopNav>
         <></>
@@ -80,7 +87,9 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <main className="flex column">
           <Component {...pageProps} />
         </main>
-        <TableOfContents toc={toc} />
+        {
+          raceID ? <BlogSidebar raceID={raceID} /> : null
+        }
       </div>
       <style jsx>
         {`

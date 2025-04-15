@@ -5,3 +5,4 @@ export * from './SideNav';
 export * from './TableOfContents';
 export * from './TopNav';
 export * from './GPXChunk';
+export * from './BlogSidebar';

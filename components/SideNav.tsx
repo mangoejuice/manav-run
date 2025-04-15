@@ -1,23 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
-const items = [
-  {
-    title: '',
-    links: [
-      { href: '/2025-03-16-united-half', children: 'United Airlines NYC Half Marathon' },
-      { href: '/2024-11-02-abbott-5k', children: 'Abbott Dash to the Finsh Line 5k' },
-      { href: '/2024-10-13-staten-island-half', children: 'Staten Island Half Marathon' },
-      { href: '/2024-09-22-bronx-10m', children: 'New Balance Bronx 10M' },
-      { href: '/2024-08-10-percy-sutton-5k', children: 'Percy Sutton Harlem 5k' },
-      { href: '/2024-06-15-citizens-queens-10k', children: 'Citizens Queens 10k' },
-      { href: '/2024-05-18-brooklyn-half', children: 'RBC Brooklyn Half' },
-      { href: '/2024-03-03-wash-heights-5k', children: 'Washington Heights Salsa, Blues, and Shamrocks 5K' },
-      { href: '/2024-02-24-al-gordon-4m', children: 'Al Gordon 4M' },
-    ],
-  },
-];
+import items from '../pages/race_registry';
 
 export function SideNav() {
   const router = useRouter();
