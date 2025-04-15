@@ -8,10 +8,12 @@
   "dependencies": {
     "@markdoc/markdoc": "latest",
     "@markdoc/next.js": "latest",
+    "leaflet": "^1.9.4",
     "next": "latest",
     "prismjs": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "react": "^19.0.0-rc.1",
+    "react-dom": "^19.0.0-rc.1",
+    "react-leaflet": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@types/node": "latest",
