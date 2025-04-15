@@ -9,6 +9,7 @@
     "@markdoc/markdoc": "latest",
     "@markdoc/next.js": "latest",
     "leaflet": "^1.9.4",
+    "leaflet-gpx": "^2.1.2",
     "next": "latest",
     "prismjs": "latest",
     "react": "^19.0.0-rc.1",
