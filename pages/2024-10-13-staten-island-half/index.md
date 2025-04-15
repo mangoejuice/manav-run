@@ -12,12 +12,6 @@ title: Staten Island Half Marathon
 - Finished stretching just in time
 - Didn’t find the pacer
 
-Overall, I was in a lot more control than Brooklyn
-Cardio was always comfortable, but I should have eased off in the first half
-I like this fueling strategy, but getting tired of Maurten (ended up holding in my mouth for a bit)
-Time to hit the gym, fell off on this
-I think I would have hit my goal if I was consistent leading up to this
-
 ### Race
 - First three were fast (esp 3)
 - It was a little warm, starting sweating at 2
@@ -33,3 +27,10 @@ I think I would have hit my goal if I was consistent leading up to this
 - Final bridge was tough, and seeing a small climb the last quarter mile was very demoralizing
 - Ended up walking, big mistake since my legs were shot
 - Finished in 2:16:57
+
+### Reflections
+- Overall, I was in a lot more control than Brooklyn
+- Cardio was always comfortable, but I should have eased off in the first half
+- I like this fueling strategy, but getting tired of Maurten (ended up holding in my mouth for a bit)
+- Time to hit the gym, fell off on this
+- I think I would have hit my goal if I was consistent leading up to this
