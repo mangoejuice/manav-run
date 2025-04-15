@@ -17,37 +17,44 @@ const items = [
             {
                 id: '2024-10-13-staten-island-half',
                 href: '/2024-10-13-staten-island-half',
-                children: 'Staten Island Half Marathon'
+                children: 'Staten Island Half Marathon',
+                gpxFile: 'Staten_Island_Half.gpx'
             },
             {
                 id: '2024-09-22-bronx-10m',
                 href: '/2024-09-22-bronx-10m',
-                children: 'New Balance Bronx 10M'
+                children: 'New Balance Bronx 10M',
+                gpxFile: 'New_Balance_Bronx_10M.gpx'
             },
             {
                 id: '2024-08-10-percy-sutton-5k',
                 href: '/2024-08-10-percy-sutton-5k',
-                children: 'Percy Sutton Harlem 5k'
+                children: 'Percy Sutton Harlem 5k',
+                gpxFile: 'Percy_Sutton_Harlem_5k.gpx'
             },
             {
                 id: '2024-06-15-citizens-queens-10k',
                 href: '/2024-06-15-citizens-queens-10k',
-                children: 'Citizens Queens 10k'
+                children: 'Citizens Queens 10k',
+                gpxFile: 'Citizens_Queens_10k.gpx'
             },
             {
                 id: '2024-05-18-brooklyn-half',
                 href: '/2024-05-18-brooklyn-half',
-                children: 'RBC Brooklyn Half'
+                children: 'RBC Brooklyn Half',
+                gpxFile: 'RBC_Brooklyn_Half.gpx'
             },
             {
                 id: '2024-03-03-wash-heights-5k',
                 href: '/2024-03-03-wash-heights-5k',
-                children: 'Washington Heights Salsa, Blues, and Shamrocks 5K'
+                children: 'Washington Heights Salsa, Blues, and Shamrocks 5K',
+                gpxFile: 'Washington_Heights_5K.gpx'
             },
             {
                 id: '2024-02-24-al-gordon-4m',
                 href: '/2024-02-24-al-gordon-4m',
-                children: 'Al Gordon 4M'
+                children: 'Al Gordon 4M',
+                gpxFile: 'Al_Gordon_4M.gpx'
             },
         ],
     },
