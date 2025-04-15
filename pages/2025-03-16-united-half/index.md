@@ -4,7 +4,7 @@ title: United Airlines NYC Half Marathon
 
 # {% $markdoc.frontmatter.title %}
 
-{% gpxchunk %}
+{% gpxchunk /%}
 
 ## Raw Notes
 
