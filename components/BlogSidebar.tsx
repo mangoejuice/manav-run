@@ -1,5 +1,5 @@
 import { GPXChunk } from "./GPXChunk";
-import items from '../pages/race_registry';
+import items from '../race_registry';
 
 function getGPXFilePathFromRaceID(raceID) {
     const gpxFile = items[0].links.find(

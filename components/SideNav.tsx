@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import items from '../pages/race_registry';
+import items from '../race_registry';
 
 export function SideNav() {
   const router = useRouter();
