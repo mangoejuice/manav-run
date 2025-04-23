@@ -21,8 +21,8 @@ const GPXTrack = ({ gpxFile, handleUpdateStats, options = {} }) => {
                 shadowUrl: ''
             },
             polyline_options: {
-                color: 'green',
-                weight: 4,
+                color: 'blue',
+                weight: 2.5,
                 opacity: 0.8
             }
         };
