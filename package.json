@@ -8,6 +8,7 @@
   "dependencies": {
     "@markdoc/markdoc": "latest",
     "@markdoc/next.js": "latest",
+    "@vercel/analytics": "^1.5.0",
     "leaflet": "^1.9.4",
     "leaflet-gpx": "^2.1.2",
     "lodash": "^4.17.21",
