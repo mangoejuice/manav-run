@@ -15,10 +15,9 @@ const GPXTrack = ({ gpxFile, handleUpdateStats, options = {} }) => {
         // Default options
         const defaultOptions = {
             async: true,
-            marker_options: {
-                startIconUrl: '',
-                endIconUrl: '',
-                shadowUrl: ''
+            markers: {
+                startIcon: '/leaflet-gpx/pin-icon-start.png',
+                endIcon: '/leaflet-gpx/pin-icon-end.png',
             },
             polyline_options: {
                 color: 'blue',
@@ -33,7 +32,9 @@ const GPXTrack = ({ gpxFile, handleUpdateStats, options = {} }) => {
         const gpxLayer = new L.GPX(gpxFile, mergedOptions)
             .on('loaded', (e) => {
                 const gpx = e.target;
-                map.fitBounds(gpx.getBounds());
+                const bounds = gpx.getBounds();
+                const adjustedBounds = bounds.pad(0.03);
+                map.fitBounds(adjustedBounds);
 
                 const gain = gpx.get_elevation_gain_imp();
                 const loss = gpx.get_elevation_loss_imp();
