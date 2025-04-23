@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 
-const GPXTrack = ({ gpxFile, options = {} }) => {
+const GPXTrack = ({ gpxFile, handleUpdateStats, options = {} }) => {
     const map = useMap();
     const gpxLayerRef = useRef(null);
 
@@ -27,7 +27,6 @@ const GPXTrack = ({ gpxFile, options = {} }) => {
             }
         };
 
-        // Merge default options with user-provided options
         const mergedOptions = { ...defaultOptions, ...options };
 
         // Create a new GPX layer
@@ -35,8 +34,22 @@ const GPXTrack = ({ gpxFile, options = {} }) => {
             .on('loaded', (e) => {
                 const gpx = e.target;
                 map.fitBounds(gpx.getBounds());
-                const pace = gpx.get_moving_pace()
-                console.log("pace", pace)
+
+                const gain = gpx.get_elevation_gain_imp();
+                const loss = gpx.get_elevation_loss_imp();
+                const net = gain - loss;
+
+                const stats = {
+                    moving_time: gpx.get_duration_string(gpx.get_moving_time(), true).replace(/^0+/, ''),
+                    distance: gpx.get_distance_imp().toFixed(2),
+                    moving_pace: gpx.get_duration_string(gpx.get_moving_pace_imp(), true).replace(/^0+/, ''),
+                    elevation_gain: gain.toFixed(0),
+                    elevation_loss: loss.toFixed(0),
+                    net_elevation: net.toFixed(0)
+                }
+                console.log(stats);
+
+                handleUpdateStats(stats);
                 console.log("GPX loaded successfully");
             })
             .on('error', (e) => {
@@ -53,7 +66,7 @@ const GPXTrack = ({ gpxFile, options = {} }) => {
                 map.removeLayer(gpxLayerRef.current);
             }
         };
-    }, [map, gpxFile, options]);
+    }, [map, gpxFile, options, handleUpdateStats]);
 
     return null; // This component doesn't render anything
 };

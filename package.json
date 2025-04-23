@@ -10,11 +10,13 @@
     "@markdoc/next.js": "latest",
     "leaflet": "^1.9.4",
     "leaflet-gpx": "^2.1.2",
+    "lodash": "^4.17.21",
     "next": "latest",
     "prismjs": "latest",
     "react": "^19.0.0-rc.1",
     "react-dom": "^19.0.0-rc.1",
-    "react-leaflet": "^5.0.0-rc.2"
+    "react-leaflet": "^5.0.0-rc.2",
+    "sass": "^1.87.0"
   },
   "devDependencies": {
     "@types/node": "latest",

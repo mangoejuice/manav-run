@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: gray;
+    font-size: 1rem;
+}
+
+.statContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.1rem;
+}
+
+.statFigure {
+    font-size: 1.1rem;
+}
+
+.statPostfix {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    color: gray;
+    white-space: pre-wrap;
+}
