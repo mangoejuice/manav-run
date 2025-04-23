@@ -3,9 +3,11 @@ import Leaflet from 'leaflet';
 import * as ReactLeaflet from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import styles from './DynamicMap.module.scss';
+
 const { MapContainer } = ReactLeaflet;
 
-const Map = ({ children, className, width, height, ...rest }) => {
+const DynamicMap = ({ children, className, width, height, ...rest }) => {
     useEffect(() => {
         (async function init() {
             delete Leaflet.Icon.Default.prototype._getIconUrl;
@@ -18,10 +20,10 @@ const Map = ({ children, className, width, height, ...rest }) => {
     }, []);
 
     return (
-        <MapContainer style={{ width: "400px", height: "400px" }}  {...rest}>
+        <MapContainer className={styles.container}  {...rest}>
             {children(ReactLeaflet, Leaflet)}
         </MapContainer>
     )
 }
 
-export default Map;
+export default DynamicMap;
