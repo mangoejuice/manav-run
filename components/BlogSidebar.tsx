@@ -1,4 +1,4 @@
-import { GPXChunk } from "./GPXChunk";
+import { GPXChunk } from "./race_components/GPXChunk";
 import items from '../race_registry';
 
 function getGPXFilePathFromRaceID(raceID) {

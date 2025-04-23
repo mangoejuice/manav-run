@@ -47,7 +47,6 @@ const GPXTrack = ({ gpxFile, handleUpdateStats, options = {} }) => {
                     elevation_loss: loss.toFixed(0),
                     net_elevation: net.toFixed(0)
                 }
-                console.log(stats);
 
                 handleUpdateStats(stats);
                 console.log("GPX loaded successfully");

@@ -1,10 +1,10 @@
 import { ElevationChip } from './ElevationChip';
-import styles from './RaceStats.module.scss'
 import { StatChip } from './StatChip';
+
+import styles from './RaceStats.module.scss'
 
 export function RaceStats(props) {
     const { stats } = props;
-    console.log('stats', stats);
 
     return (
         stats ? (
