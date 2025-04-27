@@ -5,6 +5,14 @@ import items from '../race_registry';
 
 import styles from './SideNav.module.scss';
 
+function formatDate(dateString) {
+  const [year, month, day] = dateString.split("-").map(Number);
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const monthStr = monthNames[month - 1];
+  return `${monthStr} ${day}`;
+}
+
 export function SideNav() {
   const router = useRouter();
 
@@ -18,7 +26,10 @@ export function SideNav() {
               const active = router.pathname === link.href;
               return (
                 <li key={link.href} className={`${styles.li} ${active ? styles.active : ''}`}>
-                  <Link {...link} />
+                  <div className={styles.raceitem}>
+                    <span className={styles.racedate}>{formatDate(link.date)}</span>
+                    <Link {...link} />
+                  </div>
                 </li>
               );
             })}

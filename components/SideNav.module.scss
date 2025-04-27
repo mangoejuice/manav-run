@@ -6,7 +6,7 @@
     overflow-y: auto;
     padding: 2.5rem 2rem 2rem;
     border-right: 1px solid var(--border-color);
-    width: 20rem;
+    width: 24rem;
 }
 
 .span {
@@ -22,12 +22,11 @@
     gap: .5rem;
     font-weight: lighter;
 
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
 }
 
 .li {
     list-style: none;
-    margin: 0;
 }
 
 .li :global(a) {
@@ -36,5 +35,17 @@
 
 .li :global(a:hover),
 .li.active :global(a) {
+    font-weight: normal;
+}
+
+.raceitem {
+    display: flex;
+    gap: .75rem;
+}
+
+.racedate {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    min-width: 3.5rem;
     font-weight: normal;
 }
