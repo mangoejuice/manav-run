@@ -10,7 +10,7 @@ export function TopNav({ children }) {
 
   return (
     <nav className={styles.nav}>
-      <Link href="/" className={`${styles.homeButton} ${active ? "active" : ""}`}>
+      <Link href="/" className={`${styles.homeButton} ${active ? styles.active : ""}`}>
         Home
       </Link>
       <section className={styles.section}>{children}</section>

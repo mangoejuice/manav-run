@@ -19,8 +19,11 @@
     text-decoration: none;
 }
 
-.homeButton:hover,
-.homeButton.active {
+.homeButton:hover {
+    font-weight: normal;
+}
+
+.active {
     font-weight: normal;
 }
 
