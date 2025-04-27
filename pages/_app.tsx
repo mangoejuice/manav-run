@@ -77,7 +77,8 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <meta name="referrer" content="strict-origin" />
         <meta name="title" content={title} />
         <meta name="description" content={description} />
-        <link rel="icon" href="/black-cat.png" />
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'></link>
+        <link rel="icon" href="/icons/black-cat.png" />
       </Head>
       <Analytics />
       <TopNav>

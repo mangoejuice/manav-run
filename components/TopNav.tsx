@@ -2,46 +2,26 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import styles from './TopNav.module.scss';
+
 export function TopNav({ children }) {
   const router = useRouter();
   const active = router.pathname === '/';
 
   return (
-    <nav className={`${active ? "active" : ""}`}>
-      <Link href="/" className={"flex"}>
+    <nav className={styles.nav}>
+      <Link href="/" className={`${styles.homeButton} ${active ? "active" : ""}`}>
         Home
       </Link>
-      <section>{children}</section>
-      <style jsx>
-        {`
-          nav {
-            top: 0;
-            position: fixed;
-            width: 100%;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: white;
-            border-bottom: 1px solid var(--border-color);
-            font-weight:lighter;
-          }
-          nav :global(a:hover),
-          nav.active :global(a) {
-            font-weight:normal;
-          }
-          nav :global(a) {
-            text-decoration: none;
-          }
-          section {
-            display: flex;
-            gap: 1rem;
-            padding: 0;
-          }
-        `}
-      </style>
+      <section className={styles.section}>{children}</section>
+      <div className={styles.icons}>
+        <Link href="https://github.com/mgoel283" target="_blank" rel="noreferrer noopener" className={styles.icon}>
+          <i className="fi fi-brands-github" />
+        </Link>
+        <Link href="https://www.linkedin.com/in/manav-goel/" target="_blank" rel="noreferrer noopener" className={styles.icon}>
+          <i className="fi fi-brands-linkedin" />
+        </Link>
+      </div>
     </nav>
   );
 }
