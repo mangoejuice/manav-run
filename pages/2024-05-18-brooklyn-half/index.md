@@ -4,80 +4,62 @@ title: RBC Brooklyn Half
 
 # {% $markdoc.frontmatter.title %}
 
-## Raw Notes
-
 ### Training
-- Hal Higdon Novice 2
-- Worked up to 22 miles a week, with a 12 mile long run (10:14 pace) the saturday before
-- Practiced with gels and water bottle on long runs
-- This went very well! My legs were fatigued but taper week helped
-- Did 5 miles of running during taper, and a 45 minute walk the day before the race
-- Thought I was having a right knee problem, but I was just begin paranoid
-- Tried carb loading but I couldn't eat that much
+I followed the [Hal Higdon Novice 2](https://www.halhigdon.com/training-programs/half-marathon-training/novice-2-half-marathon/) plan to get ready for this race. I picked this over Novice 1 since running 10 miles as my longest run didn't feel sufficient. 
+
+I worked up to 22 miles a week, with a 12 mile long run the weekend before the race. I practiced with gels and a water bottle on my last few long runs, and only did about 5 miles my taper week.
+
+Overall, I think my training went well! I was pretty disciplined with following the plan. I had some right knee pain the days leading up to the race, but I figured I was being paranoid (turns out I was not). I also found it hard to put down any meaningful amount of carbs the day before.
 
 ### Pre-race
-- Woke up around 5:15am
-- Rolled my lower legs a bit in the morning to loosen them up (I think this made a difference?)
-- Didn't really poop
-- headed out around 6:15am
-- Snagged some free Maurten 225s (very nice) the day before, had one on the train over
-    - It tasted fine
-- Bag-checked immediately, hit the porta-potty
-- Temp was fine, felt a little too warm in the sun when I was warming up
-- Had a cup of water 
-- Hit the porta-potty again in the corral
+The day of, I woke up around 5:15am. I foam-rolled my legs, though dubious if this made a difference. I didn't have much luck with my morning movement.
 
-### Race
-- took a caff gel once the wave started
-- Wave started at 8, didn't actually cross until ~8:25
-- Messed up starting my Strava
-- First half mile was downhill, immediately back up but felt good
-- Didn't have the usual leg tightness starting off
-- Grand army plaza good vibes
-- Felt nice and warmed up entering the park
-- Effort was slightly higher than I was expecting but wasn't too worried
-- Took a gel around mile 4, ran through the sprinkler which was fun
-- Took Battle Pass by effort, which felt great except...
-- My chest had some weird sharp pain around the top/mile 5 which I've never had before, I got nervous and slowed down a bit
-- hill-arious
-- Was able to breathe through it, but still weird since I felt great otherwise (breathing easy, legs felt fine) 
-- Picked it up a bit at the end of the park (mile 6 + 7), I felt really good
-- Grabbed an extra gel from the table at mile 7
-- Left the park feeling great, pretty confident about finishing the race strong
-- Started Ocean Parkway, slight uphill to the ramp
-- It was sunny and I started feeling hot
-- Effort got worse over the next miles
-- Took my second gel a little earlier (~8.5) than I was planning, hoped this would help
-- I picked up some endurance drink from the tables
-- Ended up walking a little bit after the 9 mile marker
-- Figured I could just run the last 4-ish a little slower
-- Couldn't get back into any good rhythm when I started running again
-- Felt really hot, hit every water table and sprinkler, I was dumping water on my neck
-- Walk-ran pretty much the remainder
-- took the extra gel at 11
-- Eked out the last 3/4 mile
-- Quads were burning but I figured someone would wheel me across the finish if I collapsed
-- Big effort once I passed the Cyclone
-- Seeing the ocean was awesome and hyped me up
-- Had a great sprint to the finish line on the boardwalk
+I headed out around 6 on the train to Prospect Park. I had grabbed some free Maurten bars the day prior, so I tried one of those for the first time. It was fine, but very sweet.
+
+I checked my bag as soon as I arrived, and hit the porta-potty (was lucky this time). I did my typical warmups, and noticed it was already pretty warm. I was in the later wave, so this wasn't that surprising. 
+
+I had a quick cup of water and hit the porta-potty again in my corral.
+
+### Starting out: Miles 0-4
+I took a caffeinated gel when the gun went off. The wave started at 8, but I didn't cross the start until 8:25. My Strava was in the wrong workout type, so I ended up messing around with that down Flatbush. 
+
+The way back was uphill, but I felt good. I was happy that my legs weren't tight like they usually had been for the first part of my runs. Rounding through Grand Army Plaza was fun, and I soaked in the crowds. Overall, I felt good once I entered the park. My effort was maybe a little higher than I expected, but I wasn't super worried.
+
+### Park loop: Miles 4-7
+I took a gel around mile four, and ran through a sprinkler which felt very nice. I took Battle Pass Hill by effort, which was very manageable (and I knew what to expect from Al Gordon). My favorite sign of the course was here ("This is hill-arious").
+
+Weirdly, I felt some chest pain around the top of the hill (mile 5). This was a new experience, so I slowed down. I was able to through it, but it was still weird since I felt very good otherwise. I picked things back up through miles six and seven. I grabbed an extra SIS gel from the table at mile seven.
+
+### Too close to the sun: Miles 7-9
+I left the park feeling awesome, and felt confident about finishing the race strong. A lot of my research before suggested that the next segment was the "party in the back" due to the slight downhill finish to the end.
+
+I took the small uphill to Ocean Parkway, which was very exposed to the sun. I started feeling very warm, and my effort (and probably heartrate) started to suffer through the next portion. Ocean Parkway is wide open with minimal tree cover, and the increasing temperatures were definitely getting to me.
+
+I took my next gel around mile 8.5, which was a little earlier than I was planning. I was hoping this would help, along with the endurance drinks I was grabbing from the tables.
+
+### Ouch: Miles 9-12
+I ended up walking around the nine mile marker, figuring I could resume and just take the last four miles a little slower. Sadly, I killed my momentum and had trouble getting back into any good rhythm.
+
+I took every water table and sprinkler, and dumped water on my neck whenever I got a chance. I walk-ran the remainder of the race. I took the extra gel I had grabbed earlier at mile eleven.
+
+
+### Ocean view: Miles 13-end
+I managed to wrap up the last mile with a bit more dignity. At this point, my quads were burning and not doing much. I assumed if I collapsed someone would wheel me across the finish.
+
+I made a big effort passing the cyclone, and rounding the corner to see the ocean was pretty cool. I sprinted across the finish and was happy the race was over.
 
 ### Post-race
-- Legs were real wobbly
-- Decent walk to get medals
-- Streched out my quads in the recovery tent
-- Met a nice guy on the line for the tent, we traded Stravas
-- Picked up my bag, then left
-- No appetite for a while, felt a little naseous for a while
-- Legs hurty
+Afterwards, I left with very wobbly legs. There was a long walk to the medals, with some stairs to go down (:pain:). I hit the recovery tent and stretched out my quads. I met a nice guy on the line for the tent, and we traded Stravas.
 
-## Reflections
-- A little disappointed by the result, I really wasn't expecting to walk the race (especially that early)
-- I ran the first half with a conservative pace with the intent to negative split, but maybe the effort was still a bit too high
-- Late start and heat?
-- I also fed into the crowd hype through the park, was fiddling with my phone (strava, music, etc.) more than I should have
-    - I definitely lacked focus going onto Ocean Pkwy
-- Ended negotiating with myself a lot around mile 9
-    - I think I could have run a bit longer (maybe even the whole race?), but it would not have been pleasant
-    - I always win my negotiations on long runs, have to translate that to race day
-- Still glad to have finished my first half marathon
-- I am motivated to get stronger for the next half marathon (and races after that)
+I picked up my bag and left with my parents. I didn't eat anything substantial since I didn't have much of an appetite, which was a mistake in retrospect.
+
+### Reflections
+Overall, I was disappointed in the result. I wasn't expecting to walk any part of the race, especially that early.
+
+I ran the first part with a relatively conservative pace, but looking back the effort was still too high given the overall conditions. At the risk of making excuses, the late start and heat played a role in the outcome.
+
+I also lacked a lot of focus through this race. I fiddled with my phone way too much in the start, and fed into the hype through the park. Even though I felt "good", I could have dialed it back for the later parts. A good rule of thumb I picked up is that the real race "starts" at mile nine.
+
+The decision to walk at mile nine was partially because I didn't have a strong plan, so I was willing to bend my rhythm. In training, I didn't really negotiate with myself. In this race, I often made adjustments like visiting water tables, fluctuating my effort, and ulitmately walking.
+
+Either way, I'm still glad to have finished my first half marathon. I am motivated to get stronger for the next half marathon (and races after that).
