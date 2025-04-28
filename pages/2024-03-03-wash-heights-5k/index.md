@@ -1,5 +1,5 @@
 ---
-title: Washington Heights Salsa, Blues, and Shamrock 5k
+title: Washington Heights Salsa, Blues, and Shamrocks 5k
 ---
 
 # {% $markdoc.frontmatter.title %}
@@ -12,7 +12,7 @@ This race takes place on the Upper West Side, so it was a lot easier to take a t
 I left my bag in a very muddy dropoff area and stretched out my calves on the curb.
 
 ### Race
-This course was immediately hilly, but manageable since I was fresh. Mile 2 through the loop in Fort Tryon Park was tough, but the views were pretty awesome.
+This course was immediately hilly, but manageable since I was fresh. Mile two through the loop in Fort Tryon Park was tough, but the views were pretty awesome.
 
 The last mile definitely hurt, but I had come in with the goal to not stop at all. I took the uphills on the way back slowly, and made it up on the downhills. 
 
