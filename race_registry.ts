@@ -6,7 +6,7 @@ const items = [
                 id: '2025-05-03-mindful-5k',
                 href: '/2025-05-03-mindful-5k',
                 children: 'Mindful 5K',
-                gpxfile: 'Mindful_5K.gpx',
+                gpxfile: 'Mindful_5k.gpx',
                 date: '2025-05-03'
             },
             {
