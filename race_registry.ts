@@ -3,6 +3,13 @@ const items = [
         title: '2025',
         links: [
             {
+                id: '2025-05-03-mindful-5k',
+                href: '/2025-05-03-mindful-5k',
+                children: 'Mindful 5K',
+                gpxfile: 'Mindful_5K.gpx',
+                date: '2025-05-03'
+            },
+            {
                 id: '2025-03-16-united-half',
                 href: '/2025-03-16-united-half',
                 children: 'United Airlines NYC Half Marathon',
