@@ -3,6 +3,13 @@ const items = [
         title: '2025',
         links: [
             {
+                id: '2025-06-14-citizens-queens-10k',
+                href: '/2025-06-14-citizens-queens-10k',
+                children: 'Citizens Queens 10k',
+                gpxfile: '2025_Citizen_Queens_10k.gpx',
+                date: '2025-06-14'
+            },
+            {
                 id: '2025-05-03-mindful-5k',
                 href: '/2025-05-03-mindful-5k',
                 children: 'Mindful 5K',
