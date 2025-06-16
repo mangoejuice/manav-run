@@ -15,7 +15,7 @@ export function TopNav({ children }) {
       </Link>
       <section className={styles.section}>{children}</section>
       <div className={styles.icons}>
-        <Link href="https://github.com/mgoel283" target="_blank" rel="noreferrer noopener" className={styles.icon}>
+        <Link href="https://github.com/mangoejuice" target="_blank" rel="noreferrer noopener" className={styles.icon}>
           <i className="fi fi-brands-github" />
         </Link>
         <Link href="https://www.linkedin.com/in/manav-goel/" target="_blank" rel="noreferrer noopener" className={styles.icon}>
