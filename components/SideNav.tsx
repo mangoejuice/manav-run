@@ -13,8 +13,12 @@ function formatDate(dateString) {
   return `${monthStr} ${day}`;
 }
 
-export function SideNav() {
+export function SideNav({ isMobile }: { isMobile: boolean }) {
   const router = useRouter();
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <nav className={styles.nav}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Analytics } from '@vercel/analytics/next';
 
@@ -49,6 +49,16 @@ export type MyAppProps = MarkdocNextJsPageProps
 
 export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1025);
+    }
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   let title = TITLE;
   let description = DESCRIPTION;
@@ -82,11 +92,11 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="icon" href="/icons/black-cat.png" />
       </Head>
       <Analytics />
-      <TopNav>
+      <TopNav isMobile={isMobile}>
         <></>
       </TopNav>
       <div className={styles.page}>
-        <SideNav />
+        <SideNav isMobile={isMobile} />
         <main className={styles.mainContent}>
           <Component {...pageProps} />
         </main>
