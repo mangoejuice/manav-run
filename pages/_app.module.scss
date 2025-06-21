@@ -1,0 +1,111 @@
+// _app.scss - Main app layout styles
+
+// Variables
+$mobile-breakpoint: 768px;
+$tablet-breakpoint: 1024px;
+$desktop-breakpoint: 1025px;
+
+$mobile-padding: 0.75rem;
+$tablet-padding: 1.5rem;
+$desktop-padding: 2rem;
+
+$mobile-font-size: 14px;
+$desktop-font-size: 16px;
+
+$sidebar-width-tablet: 200px;
+$sidebar-width-desktop: 250px;
+
+// Mixins for breakpoints
+@mixin mobile-only {
+    @media (max-width: #{$mobile-breakpoint - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @media (min-width: #{$mobile-breakpoint}) and (max-width: #{$tablet-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @media (min-width: #{$desktop-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin tablet-up {
+    @media (min-width: #{$mobile-breakpoint}) {
+        @content;
+    }
+}
+
+// Handle short viewports (mobile keyboards)
+@mixin short-viewport {
+    @media (max-height: 500px) {
+        @content;
+    }
+}
+
+// Main app layout
+.page {
+    display: flex;
+    position: fixed;
+    top: var(--top-nav-height);
+    height: calc(100vh - var(--top-nav-height));
+    width: 100%;
+
+    @include mobile-only {
+        flex-direction: column;
+    }
+
+    @include short-viewport {
+        min-height: 100vh;
+    }
+}
+
+.mainContent {
+    flex: 1;
+    overflow-y: auto;
+    min-width: 0;
+
+    // Mobile styles (default/mobile-first)
+    padding: 0 $mobile-padding $mobile-padding;
+    font-size: $mobile-font-size;
+
+    @include mobile-only {
+        order: 1;
+    }
+
+    @include tablet-only {
+        padding: 0 $tablet-padding $tablet-padding;
+    }
+
+    @include desktop-up {
+        padding: 0 $desktop-padding $desktop-padding;
+        font-size: $desktop-font-size;
+    }
+}
+
+// Utility classes for responsive behavior
+.mobile-only {
+    @include tablet-up {
+        display: none !important;
+    }
+}
+
+.tablet-up {
+    @include mobile-only {
+        display: none !important;
+    }
+}
+
+.desktop-only {
+    @include mobile-only {
+        display: none !important;
+    }
+
+    @include tablet-only {
+        display: none !important;
+    }
+}

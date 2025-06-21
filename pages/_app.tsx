@@ -10,6 +10,7 @@ import 'prismjs/components/prism-bash.min';
 import 'prismjs/themes/prism.css';
 
 import '../public/globals.css'
+import styles from './_app.module.scss';
 
 import type { AppProps } from 'next/app'
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
@@ -84,33 +85,13 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       <TopNav>
         <></>
       </TopNav>
-      <div className="page">
+      <div className={styles.page}>
         <SideNav />
-        <main className="flex column">
+        <main className={styles.mainContent}>
           <Component {...pageProps} />
         </main>
-        {
-          raceID ? <BlogSidebar raceID={raceID} /> : null
-        }
+        {raceID ? <BlogSidebar raceID={raceID} /> : null}
       </div>
-      <style jsx>
-        {`
-          .page {
-            position: fixed; 
-            top: var(--top-nav-height);
-            display: flex;
-            width: 100vw;
-            flex-grow: 1;
-          }
-          main {
-            overflow: auto;
-            height: calc(100vh - var(--top-nav-height));
-            flex-grow: 1;
-            font-size: 16px;
-            padding: 0 2rem 2rem;
-          }
-        `}
-      </style>
     </>
   );
 }
