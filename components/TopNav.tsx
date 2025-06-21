@@ -17,8 +17,8 @@ export function TopNav({ children, isMobile }: TopNavProps) {
   return (
     <>
       <nav className={styles.nav}>
-        <div>
-          {isMobile && (
+        <div className={styles.leftItems}>
+          {isMobile ? (
             <button
               className={styles.hamburger}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -26,10 +26,11 @@ export function TopNav({ children, isMobile }: TopNavProps) {
             >
               ☰
             </button>
+          ) : (
+            <Link href="/" className={`${styles.homeButton} ${active ? styles.active : ""}`}>
+              Home
+            </Link>
           )}
-          <Link href="/" className={`${styles.homeButton} ${active ? styles.active : ""}`}>
-            Home
-          </Link>
         </div>
         <section className={styles.section}>{children}</section>
         <div className={styles.icons}>

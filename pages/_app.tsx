@@ -100,7 +100,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <main className={styles.mainContent}>
           <Component {...pageProps} />
         </main>
-        {raceID ? <BlogSidebar raceID={raceID} /> : null}
+        {(raceID && !isMobile) ? <BlogSidebar raceID={raceID} /> : null}
       </div>
     </>
   );

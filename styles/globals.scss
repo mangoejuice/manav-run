@@ -1,0 +1,51 @@
+// Global SCSS variables and mixins
+
+// Breakpoints
+$mobile-breakpoint: 768px;
+$tablet-breakpoint: 1024px;
+$desktop-breakpoint: 1025px;
+
+// Spacing
+$mobile-padding: 1.25rem;
+$tablet-padding: 1.75rem;
+$desktop-padding: 2rem;
+
+// Typography
+$mobile-font-size: 14px;
+$desktop-font-size: 16px;
+
+// Layout
+$sidebar-width-tablet: 200px;
+$sidebar-width-desktop: 250px;
+
+// Mixins for breakpoints
+@mixin mobile-only {
+    @media (max-width: #{$mobile-breakpoint - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @media (min-width: #{$mobile-breakpoint}) and (max-width: #{$tablet-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @media (min-width: #{$desktop-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin tablet-up {
+    @media (min-width: #{$mobile-breakpoint}) {
+        @content;
+    }
+}
+
+// Handle short viewports (mobile keyboards)
+@mixin short-viewport {
+    @media (max-height: 500px) {
+        @content;
+    }
+}
