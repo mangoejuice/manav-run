@@ -31,7 +31,7 @@ const items = [
             {
                 id: '2024-11-02-abbott-5k',
                 href: '/2024-11-02-abbott-5k',
-                children: 'Abbott Dash to the Finsh Line 5k',
+                children: 'Abbott Dash to the Finish Line 5k',
                 gpxfile: 'Abbott_Dash_to_the_Finish_Line_5K.gpx',
                 date: '2024-11-02'
             },
