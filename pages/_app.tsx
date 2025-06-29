@@ -96,7 +96,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <></>
       </TopNav>
       <div className={styles.page}>
-        <SideNav isMobile={isMobile} />
+        <SideNav shouldHide={isMobile} />
         <main className={styles.mainContent}>
           <Component {...pageProps} />
         </main>

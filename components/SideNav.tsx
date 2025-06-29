@@ -13,15 +13,25 @@ function formatDate(dateString) {
   return `${monthStr} ${day}`;
 }
 
-export function SideNav({ isMobile }: { isMobile: boolean }) {
+export function SideNav({ shouldHide = false, inMenu = false }: { shouldHide?: boolean, inMenu?: boolean }) {
   const router = useRouter();
 
-  if (isMobile) {
+  if (shouldHide) {
     return null;
   }
 
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${inMenu ? styles.inMenu : ''}`}>
+      {inMenu && (
+        <div className={styles.homeSection}>
+          <Link
+            href="/"
+            className={`${styles.homeLink} ${router.pathname === '/' ? styles.active : ''}`}
+          >
+            Home
+          </Link>
+        </div>
+      )}
       {items.map((item) => (
         <div key={item.title}>
           <span className={styles.span}>{item.title}</span>

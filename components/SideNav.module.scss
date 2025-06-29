@@ -7,6 +7,25 @@
     padding: 2.5rem 2rem 2rem;
     border-right: 1px solid var(--border-color);
     width: 24rem;
+
+    &.inMenu {
+        border-right: none;
+    }
+}
+
+.homeSection {
+    margin-bottom: 2rem;
+}
+
+.homeLink {
+    font-size: larger;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover,
+    &.active {
+        font-weight: bold;
+    }
 }
 
 .span {

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import styles from './TopNav.module.scss';
+import { SideNav } from './SideNav';
 
 interface TopNavProps {
   children: React.ReactNode;
@@ -45,8 +46,7 @@ export function TopNav({ children, isMobile }: TopNavProps) {
       {isMobile && isMenuOpen && (
         <div className={styles.mobileMenu}>
           <div className={styles.mobileMenuContent}>
-            <p>Mobile Menu Placeholder</p>
-            <p>Navigation items will go here</p>
+            <SideNav inMenu />
           </div>
         </div>
       )}
