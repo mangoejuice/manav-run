@@ -3,6 +3,20 @@ const items = [
         title: '2025',
         links: [
             {
+                id: '2025-06-29-achilles-4m',
+                href: '/2025-06-29-achilles-4m',
+                children: 'Achilles Hope & Possibility 4M',
+                gpxfile: 'Achilles_4M.gpx',
+                date: '2025-06-29'
+            },
+            {
+                id: '2025-06-28-lgbt-4m',
+                href: '/2025-06-28-lgbt-4m',
+                children: 'Front Runners New York LGBT Pride Run 4M',
+                gpxfile: 'Front_Runners_LGBT_Pride_Run.gpx',
+                date: '2025-06-28'
+            },
+            {
                 id: '2025-06-14-citizens-queens-10k',
                 href: '/2025-06-14-citizens-queens-10k',
                 children: 'Citizens Queens 10k',
