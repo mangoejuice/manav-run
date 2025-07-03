@@ -45,9 +45,7 @@ export function TopNav({ children, isMobile }: TopNavProps) {
       </nav>
       {isMobile && isMenuOpen && (
         <div className={styles.mobileMenu}>
-          <div className={styles.mobileMenuContent}>
-            <SideNav inMenu />
-          </div>
+          <SideNav inMenu setIsMenuOpen={setIsMenuOpen} />
         </div>
       )}
     </>

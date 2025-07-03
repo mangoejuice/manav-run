@@ -13,11 +13,23 @@ function formatDate(dateString) {
   return `${monthStr} ${day}`;
 }
 
-export function SideNav({ shouldHide = false, inMenu = false }: { shouldHide?: boolean, inMenu?: boolean }) {
+export function SideNav({
+  shouldHide = false,
+  inMenu = false,
+  setIsMenuOpen = () => { },
+}: {
+  shouldHide?: boolean,
+  inMenu?: boolean,
+  setIsMenuOpen?: (isOpen: boolean) => void
+}) {
   const router = useRouter();
 
   if (shouldHide) {
     return null;
+  }
+
+  const handleClick = () => {
+    setTimeout(() => setIsMenuOpen?.(false), 375);
   }
 
   return (
@@ -27,6 +39,7 @@ export function SideNav({ shouldHide = false, inMenu = false }: { shouldHide?: b
           <Link
             href="/"
             className={`${styles.homeLink} ${router.pathname === '/' ? styles.active : ''}`}
+            onClick={handleClick}
           >
             Home
           </Link>
@@ -42,7 +55,7 @@ export function SideNav({ shouldHide = false, inMenu = false }: { shouldHide?: b
                 <li key={link.href} className={`${styles.li} ${active ? styles.active : ''}`}>
                   <div className={styles.raceitem}>
                     <span className={styles.racedate}>{formatDate(link.date)}</span>
-                    <Link {...link} />
+                    <Link {...link} onClick={handleClick} />
                   </div>
                 </li>
               );
