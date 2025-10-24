@@ -30,6 +30,7 @@
 
     @include mobile-only {
         order: 1;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     @include tablet-only {
