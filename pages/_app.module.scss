@@ -1,18 +1,20 @@
 // _app.scss - Main app layout styles
 @import '../styles/globals.scss';
 
+.app {
+    padding-bottom: env(safe-area-inset-bottom, 1em);
+}
+
 // Main app layout
 .page {
     display: flex;
     position: fixed;
     top: var(--top-nav-height);
-    height: calc(100vh - var(--top-nav-height) - env(safe-area-inset-bottom));
+    height: calc(100vh - var(--top-nav-height));
     width: 100%;
 
     @include mobile-only {
         flex-direction: column;
-        // padding-bottom: env(safe-area-inset-bottom, 1em);
-        min-height: -webkit-fill-available;
     }
 
     @include short-viewport {
