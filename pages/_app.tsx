@@ -92,17 +92,15 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="icon" href="/icons/black-cat.png" />
       </Head>
       <Analytics />
-      <div className={styles.app}>
-        <TopNav isMobile={isMobile}>
-          <></>
-        </TopNav>
-        <div className={styles.page}>
-          <SideNav shouldHide={isMobile} />
-          <main className={styles.mainContent}>
-            <Component {...pageProps} />
-          </main>
-          {(raceID && !isMobile) ? <BlogSidebar raceID={raceID} /> : null}
-        </div>
+      <TopNav isMobile={isMobile}>
+        <></>
+      </TopNav>
+      <div className={styles.page}>
+        <SideNav shouldHide={isMobile} />
+        <main className={styles.mainContent}>
+          <Component {...pageProps} />
+        </main>
+        {(raceID && !isMobile) ? <BlogSidebar raceID={raceID} /> : null}
       </div>
     </>
   );

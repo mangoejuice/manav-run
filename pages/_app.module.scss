@@ -1,10 +1,6 @@
 // _app.scss - Main app layout styles
 @import '../styles/globals.scss';
 
-.app {
-    padding-bottom: env(safe-area-inset-bottom, 1em);
-}
-
 // Main app layout
 .page {
     display: flex;
