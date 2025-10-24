@@ -1,7 +1,7 @@
 .nav {
     position: sticky;
     top: var(--top-nav-height);
-    height: calc(100vh - var(--top-nav-height));
+    height: calc(100vh - var(--top-nav-height) - env(safe-area-inset-bottom));
     flex: 0 0 auto;
     overflow-y: auto;
     padding: 2.5rem 2rem 2rem;
