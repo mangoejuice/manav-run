@@ -3,6 +3,13 @@ const items = [
         title: '2025',
         links: [
             {
+                id: '2025-11-02-nyc-marathon',
+                href: '/2025-11-02-nyc-marathon',
+                children: 'TCS New York City Marathon',
+                gpxfile: 'NYC_Marathon.gpx',
+                date: '2025-11-02'
+            },
+            {
                 id: '2025-06-29-achilles-4m',
                 href: '/2025-06-29-achilles-4m',
                 children: 'Achilles Hope & Possibility 4M',
