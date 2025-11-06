@@ -24,7 +24,7 @@
     min-width: 0;
 
     // Mobile styles (default/mobile-first)
-    padding: 0 $mobile-padding calc($mobile-padding + env(safe-area-inset-bottom));
+    padding: 0 $mobile-padding 100px;
     font-size: $mobile-font-size;
 
     @include mobile-only {
