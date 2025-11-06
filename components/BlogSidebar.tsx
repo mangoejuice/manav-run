@@ -13,7 +13,6 @@ function getGPXFilePathFromRaceID(raceID) {
 
 export function BlogSidebar(props) {
     const { raceID } = props;
-    console.log(getGPXFilePathFromRaceID(raceID))
     return (
         <GPXChunk gpxFile={getGPXFilePathFromRaceID(raceID)} />
     )

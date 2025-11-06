@@ -50,7 +50,6 @@ const GPXTrack = ({ gpxFile, handleUpdateStats, options = {} }) => {
                 }
 
                 handleUpdateStats(stats);
-                console.log("GPX loaded successfully");
             })
             .on('error', (e) => {
                 console.error("Error loading GPX:", e);

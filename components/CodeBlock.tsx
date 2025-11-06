@@ -2,7 +2,7 @@ import Prism from 'prismjs';
 
 import * as React from 'react';
 
-export function CodeBlock({children, 'data-language': language}) {
+export function CodeBlock({ children, 'data-language': language }) {
   const ref = React.useRef(null);
 
   React.useEffect(() => {
@@ -26,7 +26,11 @@ export function CodeBlock({children, 'data-language': language}) {
           /* Override Prism styles */
           .code :global(pre[class*='language-']) {
             text-shadow: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-family: Arial;
+            color:rgba(60, 66, 87, 1);
+            background-color:rgb(236, 241, 247);
+            font-size: 1em;
           }
         `}
       </style>
