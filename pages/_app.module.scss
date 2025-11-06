@@ -6,7 +6,7 @@
     display: flex;
     position: fixed;
     top: var(--top-nav-height);
-    height: calc(100vh - var(--top-nav-height));
+    height: calc(100vh - var(--top-nav-height) - env(safe-area-inset-bottom));
     width: 100%;
 
     @include mobile-only {
