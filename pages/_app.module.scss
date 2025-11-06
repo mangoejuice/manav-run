@@ -6,7 +6,7 @@
     display: flex;
     position: fixed;
     top: var(--top-nav-height);
-    height: calc(100vh - var(--top-nav-height) - env(safe-area-inset-bottom));
+    height: calc(100vh - var(--top-nav-height));
     width: 100%;
 
     @include mobile-only {
@@ -24,7 +24,7 @@
     min-width: 0;
 
     // Mobile styles (default/mobile-first)
-    padding: 0 $mobile-padding $mobile-padding;
+    padding: 0 $mobile-padding calc($mobile-padding + env(safe-area-inset-bottom));
     font-size: $mobile-font-size;
 
     @include mobile-only {
