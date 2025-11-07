@@ -7,7 +7,7 @@ title: TCS New York City Marathon
 Here's how it went.
 
 ### Training and race prep
-I aimed to complete an 18-week training block, mostly because this is what everyone says you should do to prepare for a marathon. Based on the people I talked to who had experienced their first marathons and lots of time online, I felt like my plan had to have a peak week of at least 50 miles. 
+I aimed to complete an 18-week training block, mostly because this is what everyone says you should do. Based on lots of time online, I felt like my plan had to have a peak week of at least 50 miles. 
 
 I also hoped to do some base building leading into the plan, but ended up not doing much. I felt burnt out from preparing for the United NYC Half, so I just ran enough to get through my scheduled 9+1 races.
 

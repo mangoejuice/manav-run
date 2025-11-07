@@ -20,29 +20,22 @@ export function DocImage({
     const imgHeight = height || 600;
 
     return (
-        <div
+        <Image
+            width={imgWidth}
+            height={imgHeight}
+            alt={title}
+            src={src}
+            quality={quality}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
             className={style || ''}
             style={{
+                width: '100%',
+                height: 'auto',
                 display: 'block',
                 margin: '0 auto',
-                maxWidth: '100%',
-                width: '100%'
+                maxWidth: '100%'
             }}
-        >
-            <Image
-                width={imgWidth}
-                height={imgHeight}
-                alt={title}
-                src={src}
-                quality={quality}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
-                style={{
-                    width: '100%',
-                    height: 'auto',
-                    display: 'block'
-                }}
-            />
-        </div>
+        />
     );
 }
 

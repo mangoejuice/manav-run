@@ -58,8 +58,8 @@ Overall, I was disappointed in the result. I wasn't expecting to walk any part o
 
 I ran the first part with a relatively conservative pace, but looking back the effort was still too high given the overall conditions. At the risk of making excuses, the late start and heat played a role in the outcome.
 
-I also lacked a lot of focus through this race. I fiddled with my phone way too much in the start, and fed into the hype through the park. Even though I felt "good", I could have dialed it back for the later parts. A good rule of thumb I picked up is that the real race "starts" at mile nine.
+I also lacked a lot of focus through this race. I fiddled with my phone way too much in the start, and fed into the hype through the park. Even though I felt "good", I could have dialed it back for the later parts. A good learning is that the real race "starts" at mile nine for a half marathon.
 
-The decision to walk at mile nine was partially because I didn't have a strong plan, so I was willing to bend my rhythm. In training, I didn't really negotiate with myself. In this race, I often made adjustments like visiting water tables, fluctuating my effort, and ulitmately walking.
+The decision to walk at mile nine was partially because I didn't have a strong plan. In this race, I often made adjustments like visiting water tables, fluctuating my effort, and ultimately walking.
 
 Either way, I'm still glad to have finished my first half marathon. I am motivated to get stronger for the next half marathon (and races after that).
