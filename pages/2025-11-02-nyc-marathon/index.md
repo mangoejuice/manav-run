@@ -25,7 +25,7 @@ I started race day with a great poop. I had a bagel, banana, and serving of Skra
 
 As an aside, I think Nike really stole the show with the ad placements all over the city. My favorite was a wrapped ferry they parked in front of the Statue of Liberty.
 
-![ferry](/images/ferry.jpg)
+{% docimage title="Nike ferry"  height=300 width=550 src="/images/ferry.jpg" style="center" %} {% /docimage %}
 
 Since getting to the village took so long, we didn't really get that much time until the Wave 5 corrals opened. It was just enough time to use the portapotties, get undressed, and stretch. I slammed a Red Bull on the walk over to the corrals.
 
