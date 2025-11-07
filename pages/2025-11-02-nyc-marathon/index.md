@@ -4,7 +4,7 @@ title: TCS New York City Marathon
 
 # {% $markdoc.frontmatter.title %}
 
-My races up until this point were leading to this event. Here's how it went (it's a long one).
+Here's how it went.
 
 ### Training and race prep
 I aimed to complete an 18-week training block, mostly because this is what everyone says you should do to prepare for a marathon. Based on the people I talked to who had experienced their first marathons and lots of time online, I felt like my plan had to have a peak week of at least 50 miles. 
@@ -17,21 +17,19 @@ After switching, my adherence to the plan was very good. I pretty much did all 6
 
 I was mostly healthy, but always worried about some minor leg issue. The first few weeks started with some quad pain. This gave way to something that felt like shin splints in my right leg. These completely went away once I switched shoes, at which point I started feeling some soreness in my right ankle. The worst was a legitimate left Achilles injury after my final long run, probably since I took that one a little fast. I went to physical therapy, did the prescribed exercises, and showed up healthy on race day.
 
-My taper was a little more pronounced because of the injury, so I did less runs in the days leading up to the race. A few days out, I started to carb load accoring to Featherstone's recommendation. It suggested 550 grams of carbs per day for the three days leading up to the race. I did it, but it was gross.
+I did less running than planned during the taper because of the injury. A few days out, I started to carb load according to Featherstone's recommendation. It suggested 550 grams of carbs per day for the three days leading up to the race. I did it, but it was gross.
 
-### Pre-race
+### Race day
 
-- pooped well in the morning
-- skratch banana and bagel
-- second bagel on bus
-- ferry over was good
-- Shuttle took a very long time
-- not much time in village
-- just enough to poop, get undressed and stretch before walking over
-- really stressed myself with finding the pacer
-- slammed a Red Bull
-- slow walk to the start, found the pacer
-- gel five minutes before
+I started race day with a great poop. I had a bagel, banana, and serving of Skratch carb mix for breakfast. It took almost three hours from my apartment to the start village. There was some waiting to get onto the ferry to Staten Island, and the buses from the terminal to the village took a long time. I had my second bagel on the ride over.
+
+As an aside, I think Nike really stole the show with the ad placements all over the city. My favorite was a wrapped ferry they parked in front of the Statue of Liberty.
+
+![ferry](/images/ferry.jpg)
+
+Since getting to the village took so long, we didn't really get that much time until the Wave 5 corrals opened. It was just enough time to use the portapotties, get undressed, and stretch. I slammed a Red Bull on the walk over to the corrals.
+
+I stressed myself out a lot in the corral looking for the pacer, but they just entered ~5 minutes later than we did. I took a regular gel in the start about five minutes before the start. The corrals collapsed and we walked over to the start line.
 
 ### Race
 
