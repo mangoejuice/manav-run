@@ -7,9 +7,10 @@ import styles from './DynamicMap.module.scss';
 
 const { MapContainer } = ReactLeaflet;
 
-const DynamicMap = ({ children, className, width, height, ...rest }) => {
+const DynamicMap = ({ children, className, width, height, inOverlay = false, ...rest }) => {
+    const containerClassName = `${styles.container} ${inOverlay ? styles.inOverlay : ''} ${className || ''}`;
     return (
-        <MapContainer className={styles.container}  {...rest}>
+        <MapContainer className={containerClassName}  {...rest}>
             {children(ReactLeaflet, Leaflet)}
         </MapContainer>
     )

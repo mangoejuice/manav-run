@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Analytics } from '@vercel/analytics/next';
 
-import { SideNav, TopNav, BlogSidebar, FloatingIcon } from '../components';
+import { SideNav, TopNav, BlogSidebar, FloatingIcon, GPXOverlay } from '../components';
 
 import 'prismjs';
 // Import other Prism themes here
@@ -50,6 +50,7 @@ export type MyAppProps = MarkdocNextJsPageProps
 export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
   const [isMobile, setIsMobile] = useState(false);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -102,7 +103,15 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         </main>
         {(raceID && !isMobile) ? <BlogSidebar raceID={raceID} /> : null}
       </div>
-      {(isMobile && raceID) ? <FloatingIcon /> : null}
+      {(isMobile && raceID) ? (
+        <>
+          <FloatingIcon
+            isOpen={isOverlayOpen}
+            onClick={() => setIsOverlayOpen(!isOverlayOpen)}
+          />
+          <GPXOverlay raceID={raceID} isOpen={isOverlayOpen} onClose={() => setIsOverlayOpen(false)} />
+        </>
+      ) : null}
     </>
   );
 }

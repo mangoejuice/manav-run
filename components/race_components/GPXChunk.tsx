@@ -16,7 +16,7 @@ const GPXTrack = dynamic(() => import('./GPXTrack'), {
 const DEFAULT_CENTER = [40.713733719308536, -73.9719296162436]
 
 export function GPXChunk(props) {
-    const { gpxFile } = props;
+    const { gpxFile, inOverlay = false, className } = props;
     const [trackStats, setTrackStats] = useState(null);
 
     const handleUpdateStats = (newStats) => {
@@ -25,9 +25,11 @@ export function GPXChunk(props) {
         }
     };
 
+    const containerClassName = `${styles.container} ${inOverlay ? styles.inOverlay : ''} ${className || ''}`;
+
     return (
-        <div className={styles.container}>
-            <DynamicMap center={DEFAULT_CENTER} zoom={12} {...props}>
+        <div className={containerClassName}>
+            <DynamicMap center={DEFAULT_CENTER} zoom={12} {...props} inOverlay={inOverlay}>
                 {({ TileLayer }) => (
                     <>
                         <TileLayer

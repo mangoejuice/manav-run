@@ -2,12 +2,29 @@ import styles from './FloatingIcon.module.scss';
 
 interface FloatingIconProps {
     onClick?: () => void;
-    icon?: string;
+    isOpen?: boolean;
 }
 
-export function FloatingIcon({ onClick, icon = '🗺️' }: FloatingIconProps) {
+export function FloatingIcon({ onClick, isOpen = false }: FloatingIconProps) {
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClick?.();
+        }
+    };
+
+    const icon = isOpen ? '×' : '🗺️';
+    const ariaLabel = isOpen ? 'Close race map' : 'Open race map';
+
     return (
-        <div className={styles.floatingIcon} onClick={onClick} role="button" tabIndex={0}>
+        <div
+            className={`${styles.floatingIcon} ${isOpen ? styles.isOpen : ''}`}
+            onClick={onClick}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label={ariaLabel}
+        >
             {icon}
         </div>
     );

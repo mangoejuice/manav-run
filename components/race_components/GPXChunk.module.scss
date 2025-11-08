@@ -4,4 +4,16 @@
     margin-top: 1rem;
     padding: 2rem;
     gap: 1.2rem;
+
+    &.inOverlay {
+        margin-top: 0;
+        padding: 0;
+        flex: 1;
+        min-height: 0;
+        gap: 1rem;
+
+        @media (max-width: 768px) {
+            gap: 0.75rem;
+        }
+    }
 }

@@ -1,4 +1,16 @@
 .container {
     width: 425px;
     height: 425px;
+
+    &.inOverlay {
+        width: 100% !important;
+        height: 100% !important;
+        flex: 1;
+        min-height: 300px;
+
+        @media (max-width: 768px) {
+            min-height: calc(100vh - 200px);
+            max-height: calc(100vh - 200px);
+        }
+    }
 }

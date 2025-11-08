@@ -6,3 +6,4 @@ export * from './TableOfContents';
 export * from './TopNav';
 export * from './BlogSidebar';
 export * from './FloatingIcon';
+export * from './GPXOverlay';
