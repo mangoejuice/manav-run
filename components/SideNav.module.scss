@@ -7,9 +7,16 @@
     padding: 2.5rem 2rem 2rem;
     border-right: 1px solid var(--border-color);
     width: 24rem;
+    z-index: 3000;
 
     &.inMenu {
         border-right: none;
+        position: relative;
+        z-index: 3000;
+        top: 0;
+        height: 100%;
+        padding: 1rem 2rem 2rem;
+        width: 100%;
     }
 }
 
