@@ -4,8 +4,6 @@ title: TCS New York City Marathon
 
 # {% $markdoc.frontmatter.title %}
 
-Here's how it went.
-
 ### Training and race prep
 I aimed to complete an 18-week training block, mostly because this is what everyone says you should do. Based on lots of time online, I felt like my plan had to have a peak week of at least 50 miles. 
 
