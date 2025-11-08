@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Analytics } from '@vercel/analytics/next';
 
-import { SideNav, TopNav, BlogSidebar } from '../components';
+import { SideNav, TopNav, BlogSidebar, FloatingIcon } from '../components';
 
 import 'prismjs';
 // Import other Prism themes here
@@ -102,6 +102,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         </main>
         {(raceID && !isMobile) ? <BlogSidebar raceID={raceID} /> : null}
       </div>
+      {(isMobile && raceID) ? <FloatingIcon /> : null}
     </>
   );
 }
