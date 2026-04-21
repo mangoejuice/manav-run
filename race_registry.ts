@@ -1,5 +1,17 @@
 const items = [
     {
+        title: '2026',
+        links: [
+            {
+                id: '2026-04-19-jersey-city-half',
+                href: '/2026-04-19-jersey-city-half',
+                children: 'Jersey City Half Marathon',
+                gpxfile: 'Jersey_City_Half_Marathon.gpx',
+                date: '2026-04-19'
+            },
+        ]
+    },
+    {
         title: '2025',
         links: [
             {
