@@ -33,7 +33,7 @@ export function GPXChunk(props) {
                 {({ TileLayer }) => (
                     <>
                         <TileLayer
-                            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=cb1_53v4_1_e4740908001d130fdc75259b"
                             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
                         />
                         <GPXTrack gpxFile={gpxFile} handleUpdateStats={handleUpdateStats} />
