@@ -5,6 +5,11 @@ import { RaceStats } from './RaceStats';
 
 import styles from './GPXChunk.module.scss';
 
+// CARTO basemap tiles. The key is public by nature (the browser sends it with every tile
+// request), so it's protected by domain restrictions in CARTO, not by hiding it.
+const CARTO_KEY = process.env.NEXT_PUBLIC_CARTO_API_KEY;
+const TILE_URL = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png${CARTO_KEY ? `?key=${CARTO_KEY}` : ''}`;
+
 const DynamicMap = dynamic(() => import('./DynamicMap'), {
     ssr: false
 });
@@ -33,7 +38,7 @@ export function GPXChunk(props) {
                 {({ TileLayer }) => (
                     <>
                         <TileLayer
-                            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=cb1_53v4_1_e4740908001d130fdc75259b"
+                            url={TILE_URL}
                             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
                         />
                         <GPXTrack gpxFile={gpxFile} handleUpdateStats={handleUpdateStats} />
