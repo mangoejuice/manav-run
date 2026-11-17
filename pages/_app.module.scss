@@ -43,10 +43,6 @@
 
 // Home page: full-width single column, no sidebar
 .mainContent.home {
-    @include desktop-up {
-        padding-inline: $desktop-padding * 2;
-    }
-
     :global(h1) {
         font-size: 2.5rem;
 
