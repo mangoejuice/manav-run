@@ -37,6 +37,29 @@
     font-weight: normal;
 }
 
+.tabs {
+    display: flex;
+    gap: 1.5rem;
+}
+
+// The active tab's underline sits on the nav's bottom border.
+.tab {
+    font-weight: lighter;
+    text-decoration: none;
+    padding-bottom: calc(1rem - 1px);
+    margin-bottom: calc(-1rem - 1px);
+    border-bottom: 2px solid transparent;
+
+    &:not(.activeTab):hover {
+        font-weight: normal;
+    }
+}
+
+.activeTab {
+    font-weight: 500;
+    border-bottom-color: currentColor;
+}
+
 .section {
     display: flex;
     gap: 1rem;

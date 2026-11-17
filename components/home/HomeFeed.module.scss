@@ -30,18 +30,53 @@
 .row {
     display: grid;
     grid-template-columns: 5.25em 1fr;
-    align-items: baseline;
+    align-items: center;
     column-gap: 0.25rem;
     padding: 0.9em 0;
     border-bottom: 1px solid var(--border-color);
 
     @include mobile-only {
         grid-template-columns: 4.5em 1fr;
+        align-items: start; // date lines up with the title, not the thumbnails
     }
 }
 
 .date {
     white-space: nowrap;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+
+    @include mobile-only {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+// Desktop: thumbnails sit before the title.
+.thumbs {
+    display: flex;
+    gap: 3px;
+    order: -1;
+
+    @include mobile-only {
+        order: 0;
+    }
+}
+
+.thumb {
+    width: 38px;
+    height: 28px;
+
+    @include mobile-only {
+        width: 56px;
+        height: 40px;
+    }
 }
 
 .title {

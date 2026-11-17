@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Photo } from '../../photo_registry';
 import { formatDate } from '../../utils/formatDate';
+import { PhotoTile } from '../photos/PhotoTile';
 
 import styles from './HomeFeed.module.scss';
 
@@ -8,13 +10,24 @@ interface FeedRowProps {
   date: string;
   title: string;
   href: string;
+  // Photo sets show up to three thumbnails: before the title on desktop, below it on mobile.
+  photos?: Photo[];
 }
 
-export function FeedRow({ date, title, href }: FeedRowProps) {
+export function FeedRow({ date, title, href, photos }: FeedRowProps) {
   return (
     <li className={styles.row}>
       <span className={styles.date}>{formatDate(date)}</span>
-      <Link href={href} className={styles.title}>{title}</Link>
+      <div className={styles.content}>
+        <Link href={href} className={styles.title}>{title}</Link>
+        {photos && (
+          <Link href={href} className={styles.thumbs} tabIndex={-1} aria-hidden="true">
+            {photos.slice(0, 3).map((photo, i) => (
+              <PhotoTile key={i} photo={photo} alt={i % 2 === 1} sizes="64px" className={styles.thumb} />
+            ))}
+          </Link>
+        )}
+      </div>
     </li>
   );
 }

@@ -2,7 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { usePhotosFlag } from '../utils/usePhotosFlag';
+
 import styles from './TopNav.module.scss';
+
+// Shown when the `photos` flag is on.
+const TABS = [
+  { href: '/', label: 'Home' },
+  { href: '/photography', label: 'Photography' },
+];
 
 interface TopNavProps {
   children: React.ReactNode;
@@ -12,11 +20,24 @@ interface TopNavProps {
 export function TopNav({ children, isMobile }: TopNavProps) {
   const router = useRouter();
   const active = router.pathname === '/';
+  const photosEnabled = usePhotosFlag();
 
   return (
     <nav className={styles.nav}>
       <div className={styles.leftItems}>
-        {isMobile ? (
+        {photosEnabled ? (
+          <div className={styles.tabs}>
+            {TABS.map((tab) => (
+              <Link
+                key={tab.href}
+                href={tab.href}
+                className={`${styles.tab} ${router.pathname === tab.href ? styles.activeTab : ''}`}
+              >
+                {tab.label}
+              </Link>
+            ))}
+          </div>
+        ) : isMobile ? (
           <Link href="/" className={styles.wordmark}>
             manav.run
           </Link>

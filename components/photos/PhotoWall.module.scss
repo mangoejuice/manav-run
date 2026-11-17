@@ -1,0 +1,71 @@
+@import '../../styles/globals.scss';
+
+$gap: 10px;
+
+.wall {
+    column-count: 4;
+    column-gap: $gap;
+    margin-top: 1.5rem;
+
+    @include mobile-only {
+        column-count: 2;
+        column-gap: 8px;
+        margin-top: 1rem;
+    }
+}
+
+.item {
+    break-inside: avoid;
+    margin: 0 0 $gap;
+
+    @include mobile-only {
+        margin-bottom: 8px;
+    }
+}
+
+.frame {
+    position: relative;
+}
+
+// Title + date over a bottom gradient, shown on hover (desktop/tablet).
+.overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 3.5rem 0.75rem 0.65rem;
+    background: linear-gradient(to bottom, rgba(60, 66, 87, 0), rgba(60, 66, 87, 0.85));
+    color: white;
+    opacity: 0;
+    transition: opacity 150ms ease;
+
+    .frame:hover & {
+        opacity: 1;
+    }
+
+    @include mobile-only {
+        display: none;
+    }
+}
+
+.overlayTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.overlayDate {
+    font-size: 0.75rem;
+}
+
+// Caption under the first photo of each set (mobile).
+.caption {
+    display: none;
+
+    @include mobile-only {
+        display: block;
+        padding-top: 0.35rem;
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+}

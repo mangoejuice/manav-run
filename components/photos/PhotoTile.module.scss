@@ -1,0 +1,13 @@
+.tile {
+    position: relative;
+    overflow: hidden;
+    background: #e8e9ed;
+
+    &.alt {
+        background: #dfe2e6;
+    }
+}
+
+.image {
+    object-fit: cover;
+}
