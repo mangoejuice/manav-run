@@ -6,38 +6,15 @@ import { formatDate } from '../utils/formatDate';
 
 import styles from './SideNav.module.scss';
 
-export function SideNav({
-  shouldHide = false,
-  inMenu = false,
-  setIsMenuOpen = () => { },
-}: {
-  shouldHide?: boolean,
-  inMenu?: boolean,
-  setIsMenuOpen?: (isOpen: boolean) => void
-}) {
+export function SideNav({ shouldHide = false }: { shouldHide?: boolean }) {
   const router = useRouter();
 
   if (shouldHide) {
     return null;
   }
 
-  const handleClick = () => {
-    setTimeout(() => setIsMenuOpen?.(false), 375);
-  }
-
   return (
-    <nav className={`${styles.nav} ${inMenu ? styles.inMenu : ''}`}>
-      {inMenu && (
-        <div className={styles.homeSection}>
-          <Link
-            href="/"
-            className={`${styles.homeLink} ${router.pathname === '/' ? styles.active : ''}`}
-            onClick={handleClick}
-          >
-            Home
-          </Link>
-        </div>
-      )}
+    <nav className={styles.nav}>
       {items.map((item) => (
         <div key={item.title}>
           <span className={styles.span}>{item.title}</span>
@@ -48,7 +25,7 @@ export function SideNav({
                 <li key={link.href} className={`${styles.li} ${active ? styles.active : ''}`}>
                   <div className={styles.raceitem}>
                     <span className={styles.racedate}>{formatDate(link.date)}</span>
-                    <Link {...link} onClick={handleClick} />
+                    <Link {...link} />
                   </div>
                 </li>
               );

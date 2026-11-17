@@ -42,9 +42,9 @@
 }
 
 // Home page: full-width single column, no sidebar
-.homeContent {
+.mainContent.home {
     @include desktop-up {
-        padding: 0 2rem; // 2rem from .mainContent + 2rem = 64px gutter
+        padding-inline: $desktop-padding * 2;
     }
 
     :global(h1) {
