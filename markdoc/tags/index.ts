@@ -1,3 +1,4 @@
 /* Use this file to export your markdoc tags */
 export * from './callout.markdoc';
 export * from './docimage.markdoc';
+export * from './feed.markdoc';

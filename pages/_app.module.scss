@@ -41,6 +41,21 @@
     }
 }
 
+// Home page: full-width single column, no sidebar
+.homeContent {
+    @include desktop-up {
+        padding: 0 2rem; // 2rem from .mainContent + 2rem = 64px gutter
+    }
+
+    :global(h1) {
+        font-size: 2.5rem;
+
+        @include tablet-up {
+            font-size: 3rem;
+        }
+    }
+}
+
 // Utility classes for responsive behavior
 .mobile-only {
     @include tablet-up {

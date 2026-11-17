@@ -20,13 +20,9 @@ export function TopNav({ children, isMobile }: TopNavProps) {
       <nav className={styles.nav}>
         <div className={styles.leftItems}>
           {isMobile ? (
-            <button
-              className={styles.hamburger}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              ☰
-            </button>
+            <Link href="/" className={styles.wordmark} onClick={() => setIsMenuOpen(false)}>
+              manav.run
+            </Link>
           ) : (
             <Link href="/" className={`${styles.homeButton} ${active ? styles.active : ""}`}>
               Home
@@ -41,6 +37,15 @@ export function TopNav({ children, isMobile }: TopNavProps) {
           <Link href="https://www.linkedin.com/in/manav-goel/" target="_blank" rel="noreferrer noopener" className={styles.icon}>
             <i className="fi fi-brands-linkedin" />
           </Link>
+          {isMobile && (
+            <button
+              className={styles.hamburger}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              ☰
+            </button>
+          )}
         </div>
       </nav>
       {isMobile && isMenuOpen && (

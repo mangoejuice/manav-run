@@ -2,16 +2,9 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import items from '../race_registry';
+import { formatDate } from '../utils/formatDate';
 
 import styles from './SideNav.module.scss';
-
-function formatDate(dateString) {
-  const [year, month, day] = dateString.split("-").map(Number);
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const monthStr = monthNames[month - 1];
-  return `${monthStr} ${day}`;
-}
 
 export function SideNav({
   shouldHide = false,

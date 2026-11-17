@@ -64,6 +64,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   let title = TITLE;
   let description = DESCRIPTION;
   let raceID = null;
+  let isHome = false;
   if (markdoc) {
     if (markdoc.frontmatter.title) {
       title = markdoc.frontmatter.title;
@@ -71,7 +72,9 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     if (markdoc.frontmatter.description) {
       description = markdoc.frontmatter.description;
     }
-    if (markdoc.file.path !== '/index.md') {
+    if (markdoc.file.path === '/index.md') {
+      isHome = true;
+    } else {
       raceID = getRaceID(markdoc.file.path)
     }
   }
@@ -97,9 +100,15 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <></>
       </TopNav>
       <div className={styles.page}>
-        <SideNav shouldHide={isMobile} />
+        <SideNav shouldHide={isMobile || isHome} />
         <main className={styles.mainContent}>
-          <Component {...pageProps} />
+          {isHome ? (
+            <div className={styles.homeContent}>
+              <Component {...pageProps} />
+            </div>
+          ) : (
+            <Component {...pageProps} />
+          )}
         </main>
         {(raceID && !isMobile) ? <BlogSidebar raceID={raceID} /> : null}
       </div>
