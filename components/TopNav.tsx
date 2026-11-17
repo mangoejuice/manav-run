@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import styles from './TopNav.module.scss';
-import { SideNav } from './SideNav';
 
 interface TopNavProps {
   children: React.ReactNode;
@@ -13,14 +12,13 @@ interface TopNavProps {
 export function TopNav({ children, isMobile }: TopNavProps) {
   const router = useRouter();
   const active = router.pathname === '/';
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
       <nav className={styles.nav}>
         <div className={styles.leftItems}>
           {isMobile ? (
-            <Link href="/" className={styles.wordmark} onClick={() => setIsMenuOpen(false)}>
+            <Link href="/" className={styles.wordmark}>
               manav.run
             </Link>
           ) : (
@@ -37,22 +35,8 @@ export function TopNav({ children, isMobile }: TopNavProps) {
           <Link href="https://www.linkedin.com/in/manav-goel/" target="_blank" rel="noreferrer noopener" className={styles.icon}>
             <i className="fi fi-brands-linkedin" />
           </Link>
-          {isMobile && (
-            <button
-              className={styles.hamburger}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              ☰
-            </button>
-          )}
         </div>
       </nav>
-      {isMobile && isMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <SideNav inMenu setIsMenuOpen={setIsMenuOpen} />
-        </div>
-      )}
     </>
   );
 }
