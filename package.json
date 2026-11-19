@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "race-stats": "node scripts/race-stats.mjs"
   },
   "dependencies": {
     "@flags-sdk/vercel": "^1.6.0",

@@ -2,6 +2,7 @@ import React from 'react';
 import items from '../../race_registry';
 import photoSets, { type Photo } from '../../photo_registry';
 import { usePhotosFlag } from '../../utils/usePhotosFlag';
+import { groupByYear } from '../../utils/groupByYear';
 import { FeedRow } from './FeedRow';
 
 import styles from './HomeFeed.module.scss';
@@ -25,18 +26,6 @@ const photoEntries: FeedEntry[] = photoSets.map((set) => ({
   href: '/photography',
   photos: set.photos,
 }));
-
-// Newest first, grouped by year.
-function groupByYear(entries: FeedEntry[]): [string, FeedEntry[]][] {
-  const sorted = [...entries].sort((a, b) => b.date.localeCompare(a.date));
-  const years = new Map<string, FeedEntry[]>();
-  for (const entry of sorted) {
-    const year = entry.date.slice(0, 4);
-    if (!years.has(year)) years.set(year, []);
-    years.get(year).push(entry);
-  }
-  return [...years];
-}
 
 // Both variants are static, so build them once.
 const RACES_ONLY = groupByYear(raceEntries);

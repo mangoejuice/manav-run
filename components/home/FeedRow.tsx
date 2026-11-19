@@ -12,11 +12,13 @@ interface FeedRowProps {
   href: string;
   // Photo sets show up to three thumbnails: before the title on desktop, below it on mobile.
   photos?: Photo[];
+  // Optional trailing column on desktop; drops below the title on mobile.
+  children?: React.ReactNode;
 }
 
-export function FeedRow({ date, title, href, photos }: FeedRowProps) {
+export function FeedRow({ date, title, href, photos, children }: FeedRowProps) {
   return (
-    <li className={styles.row}>
+    <li className={`${styles.row} ${children ? styles.hasExtra : ''}`}>
       <span className={styles.date}>{formatDate(date)}</span>
       <div className={styles.content}>
         <Link href={href} className={styles.title}>{title}</Link>
@@ -28,6 +30,7 @@ export function FeedRow({ date, title, href, photos }: FeedRowProps) {
           </Link>
         )}
       </div>
+      {children && <div className={styles.extra}>{children}</div>}
     </li>
   );
 }

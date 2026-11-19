@@ -9,6 +9,7 @@ import styles from './TopNav.module.scss';
 // Shown when the `photos` flag is on.
 const TABS = [
   { href: '/', label: 'Home' },
+  { href: '/running', label: 'Running' },
   { href: '/photography', label: 'Photography' },
 ];
 

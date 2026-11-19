@@ -1,0 +1,14 @@
+// Year heading with the Time / Pace labels on the same line. The border moves
+// from the h2 to this row so it spans both.
+.yearHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-color);
+
+    h2 {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}

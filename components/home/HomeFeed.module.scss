@@ -41,6 +41,24 @@
     }
 }
 
+.hasExtra {
+    grid-template-columns: 5.25em minmax(0, 1fr) auto;
+
+    @include mobile-only {
+        grid-template-columns: 4.5em 1fr;
+        row-gap: 0.35rem;
+    }
+}
+
+.extra {
+    padding-left: 1rem;
+
+    @include mobile-only {
+        grid-column: 2;
+        padding-left: 0;
+    }
+}
+
 .date {
     white-space: nowrap;
 }
