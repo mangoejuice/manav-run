@@ -2,16 +2,23 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { usePhotosFlag } from '../utils/usePhotosFlag';
+import type { FlagValues } from '../flags';
+import { useFlags } from '../utils/useFlags';
 
 import styles from './TopNav.module.scss';
 
-// Shown when the `photos` flag is on.
-const TABS = [
+// Each tab shows when its flag is on (Home whenever any other tab does).
+const TABS: { href: string; label: string; flag?: keyof FlagValues }[] = [
   { href: '/', label: 'Home' },
-  { href: '/running', label: 'Running' },
-  { href: '/photography', label: 'Photography' },
+  { href: '/running', label: 'Running', flag: 'photos' },
+  { href: '/photography', label: 'Photography', flag: 'photos' },
+  { href: '/blog', label: 'Blog', flag: 'blog' },
 ];
+
+// The Blog tab stays active on post pages.
+function isActive(pathname: string, href: string) {
+  return pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
+}
 
 interface TopNavProps {
   children: React.ReactNode;
@@ -21,18 +28,19 @@ interface TopNavProps {
 export function TopNav({ children, isMobile }: TopNavProps) {
   const router = useRouter();
   const active = router.pathname === '/';
-  const photosEnabled = usePhotosFlag();
+  const flags = useFlags();
+  const tabs = TABS.filter((tab) => !tab.flag || flags[tab.flag]);
 
   return (
     <nav className={styles.nav}>
       <div className={styles.leftItems}>
-        {photosEnabled ? (
+        {tabs.length > 1 ? (
           <div className={styles.tabs}>
-            {TABS.map((tab) => (
+            {tabs.map((tab) => (
               <Link
                 key={tab.href}
                 href={tab.href}
-                className={`${styles.tab} ${router.pathname === tab.href ? styles.activeTab : ''}`}
+                className={`${styles.tab} ${isActive(router.pathname, tab.href) ? styles.activeTab : ''}`}
               >
                 {tab.label}
               </Link>

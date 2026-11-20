@@ -40,6 +40,12 @@
 .tabs {
     display: flex;
     gap: 1.5rem;
+
+    // Four tabs plus the icons have to fit a phone's width.
+    @include mobile-only {
+        gap: 0.9rem;
+        font-size: 0.95rem;
+    }
 }
 
 // The active tab's underline sits on the nav's bottom border.
@@ -75,6 +81,10 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    @include mobile-only {
+        gap: 0.75rem;
+    }
 }
 
 .icon {
