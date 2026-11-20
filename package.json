@@ -4,7 +4,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "race-stats": "node scripts/race-stats.mjs"
+    "race-stats": "node scripts/race-stats.mjs",
+    "strava-auth": "node scripts/strava-auth.mjs",
+    "strava-sync": "node scripts/strava-sync.mjs"
   },
   "dependencies": {
     "@flags-sdk/vercel": "^1.6.0",
