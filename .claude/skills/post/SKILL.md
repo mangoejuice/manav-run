@@ -107,16 +107,37 @@ Start writing here.
 Posts are Markdoc: `{% callout title="..." %}...{% /callout %}` and
 `docimage` work as on race pages; put images in `public/images/blog/<slug>/`.
 
-## 3. Hand off
+## 3. Start the dev server
+
+Make sure a dev server is running so the page can be previewed:
+
+- If something is already listening on port 3000
+  (`lsof -iTCP:3000 -sTCP:LISTEN`), check it has the flags on:
+  `curl -s localhost:3000/api/flags` should show `"blog":true` for a post
+  (and `"photos":true` for the Running page). If it does, reuse it.
+  If not, tell the user it's running without the flags and offer to restart it
+  rather than killing it unasked.
+- Otherwise start it in the background, with both flags on, so it keeps
+  running after this turn:
+  `PHOTOS_FLAG_OVERRIDE=true BLOG_FLAG_OVERRIDE=true npm run dev`.
+  In a Rex terminal (`$REX_SESSION` set), open it in its own window so the
+  user can see the logs:
+  `rex window new -s "$REX_SESSION" "Dev server" --focus=false --keep-open -c "$PWD" -- env PHOTOS_FLAG_OVERRIDE=true BLOG_FLAG_OVERRIDE=true npm run dev`.
+  Otherwise run it with Bash's `run_in_background`.
+- Wait until the new page returns 200 (`curl -s -o /dev/null -w '%{http_code}' localhost:3000/<path>`,
+  polling for up to ~30s) before handing off. If it doesn't, show the error
+  from the server output.
+
+## 4. Hand off
 
 Finish with a short summary:
 - Every file created or changed, as clickable paths — **the markdown file
   first**, called out as where to write, with a line number pointing at where
   the body starts (the blank line under `### Training` for a race; the
   "Start writing here." line for a post), e.g. `pages/<slug>/index.md:8`.
-- Where it will appear locally: `http://localhost:3000/<slug>` or
-  `http://localhost:3000/blog/<slug>`. Blog pages need the `blog` flag on
-  (`BLOG_FLAG_OVERRIDE=true` in dev); drafts need `npm run dev`.
+- The preview URL, now live: `http://localhost:3000/<slug>` or
+  `http://localhost:3000/blog/<slug>`, and where the dev server is running
+  (reused, Rex window, or background task).
 - Any follow-up left (drop in the GPX + `npm run race-stats`; flip `draft`
   when ready to publish).
 
