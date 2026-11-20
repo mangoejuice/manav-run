@@ -1,9 +1,19 @@
 @import '../../styles/globals.scss';
 
+$text: rgb(60, 66, 87); // body text color (public/globals.css)
+$ink: #343a55; // darkest shade; also the tooltip and hover ring
+$label-width: 32px;
+$gap: 4px;
+
 // Positioning context for the tooltip, which lives outside the scroller so it
 // isn't clipped.
 .wrapper {
     position: relative;
+    margin-top: 1.5rem;
+
+    @include mobile-only {
+        margin-top: 1.25rem;
+    }
 }
 
 // Below the grid: year pills on the left, shade legend on the right.
@@ -33,19 +43,16 @@
     cursor: pointer;
 
     &:hover:not(.activeYear) {
-        border-color: rgba(60, 66, 87, 0.5);
+        border-color: rgba($text, 0.5);
     }
 }
 
 .activeYear {
-    border-color: rgba(60, 66, 87, 1);
-    background: rgba(60, 66, 87, 1);
+    border-color: $text;
+    background: $text;
     color: white;
     font-weight: 600;
 }
-
-$label-width: 32px;
-$gap: 4px;
 
 // Scrolls sideways through the full history. Cells are sized from this box's
 // width so one year (53 weeks) fills it on desktop; phones keep a 12px minimum.
@@ -53,11 +60,13 @@ $gap: 4px;
     container-type: inline-size;
     overflow-x: auto;
     padding-bottom: 0.25rem;
+    scroll-padding-left: $label-width + $gap; // scrollToYear clears the pinned labels
 }
 
 .grid {
     --cell: max(12px, min(22px, calc((100cqw - #{$label-width}) / 53 - #{$gap})));
     display: grid;
+    grid-template-columns: $label-width repeat(var(--weeks), var(--cell));
     gap: $gap;
     width: max-content;
     font-size: 0.75rem;
@@ -91,7 +100,7 @@ $gap: 4px;
     align-items: center;
     padding-right: 6px;
     line-height: 1;
-    color: rgba(60, 66, 87, 0.7);
+    color: rgba($text, 0.7);
 }
 
 .cell {
@@ -109,7 +118,7 @@ $gap: 4px;
     z-index: 2;
     box-sizing: content-box;
     margin: -3px 0 0 -3px;
-    border: 2px solid #343a55;
+    border: 2px solid $ink;
     border-radius: 4px;
     padding: 1px;
     pointer-events: none;
@@ -123,8 +132,8 @@ $gap: 4px;
     gap: 0.15rem;
     padding: 0.55rem 0.8rem;
     border-radius: 8px;
-    background: #343a55;
-    box-shadow: 0 4px 12px rgba(52, 58, 85, 0.25);
+    background: $ink;
+    box-shadow: 0 4px 12px rgba($ink, 0.25);
     color: white;
     white-space: nowrap;
     pointer-events: none;
@@ -145,7 +154,7 @@ $gap: 4px;
 .level1 { background: #c9d1e3; }
 .level2 { background: #8fa0c7; }
 .level3 { background: #5d6fa3; }
-.level4 { background: #343a55; }
+.level4 { background: $ink; }
 .race { background: #c2410c; }
 
 .legend {

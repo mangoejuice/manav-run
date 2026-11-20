@@ -1,9 +1,0 @@
-@import '../../styles/globals.scss';
-
-.container {
-    margin-top: 1.5rem;
-
-    @include mobile-only {
-        margin-top: 1.25rem;
-    }
-}

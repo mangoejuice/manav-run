@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import type { GetServerSideProps } from 'next';
-import items from '../race_registry';
+import { allRaces } from '../race_registry';
 import raceStats from '../race_stats.json';
 import runMiles from '../run_miles.json';
 import { getFlagValues } from '../flags';
@@ -9,7 +9,7 @@ import { groupByYear } from '../utils/groupByYear';
 import { HEATMAP_START } from '../utils/heatmapStart';
 import { FeedRow } from '../components/home/FeedRow';
 import { RaceTimes, RaceTimesHeader } from '../components/running/RaceTimes';
-import { RunningHeatmap } from '../components/running/RunningHeatmap';
+import { Heatmap } from '../components/running/Heatmap';
 
 import styles from '../components/home/HomeFeed.module.scss';
 import runningStyles from './running.module.scss';
@@ -27,16 +27,15 @@ export const getServerSideProps: GetServerSideProps<RunningProps> = async ({ req
   return { props: { today } };
 };
 
-const raceList = items.flatMap((year) => year.links);
 const RACE_DAYS = Object.fromEntries(
-  raceList.map((race) => [
+  allRaces.map((race) => [
     race.date,
     { name: race.children, href: race.href, miles: raceStats[race.gpxfile]?.distanceMi },
   ])
 );
 
 const YEARS = groupByYear(
-  raceList.map((race) => ({
+  allRaces.map((race) => ({
     id: race.id,
     date: race.date,
     title: race.children,
@@ -51,7 +50,7 @@ export default function Running({ today }: RunningProps) {
       <Head>
         <title>Running · manav.run</title>
       </Head>
-      <RunningHeatmap start={HEATMAP_START} today={today} runs={runMiles} races={RACE_DAYS} />
+      <Heatmap start={HEATMAP_START} today={today} runs={runMiles} races={RACE_DAYS} />
       <div className={styles.feed}>
         {YEARS.map(([year, races]) => (
           <section key={year} className={styles.year}>

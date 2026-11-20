@@ -122,3 +122,6 @@ const items = [
 ];
 
 export default items;
+
+// Every race, flattened out of the year groups.
+export const allRaces = items.flatMap((year) => year.links);

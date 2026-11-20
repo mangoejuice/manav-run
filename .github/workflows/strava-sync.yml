@@ -6,7 +6,7 @@ name: Sync Strava runs
 
 on:
   # Noon Eastern. Cron is UTC, so fire at both 16:00 (EDT) and 17:00 (EST) and
-  # let the first step skip whichever one isn't noon in New York.
+  # let the check job skip whichever one isn't noon in New York.
   schedule:
     - cron: '0 16 * * *'
     - cron: '0 17 * * *'
@@ -20,8 +20,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  sync:
+  # Decides whether this run should sync; manual runs always do.
+  check:
     runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.noon.outputs.run }}
     steps:
       - name: Check it's noon in New York
         id: noon
@@ -34,17 +37,19 @@ jobs:
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi
 
+  sync:
+    needs: check
+    if: needs.check.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
-        if: steps.noon.outputs.run == 'true'
 
       - uses: actions/setup-node@v4
-        if: steps.noon.outputs.run == 'true'
         with:
           node-version: 22
 
-      # The script only uses Node built-ins, so no npm install.
+      # The scripts only use Node built-ins, so no npm install.
       - name: Sync runs
-        if: steps.noon.outputs.run == 'true'
         run: node scripts/strava-sync.mjs
         env:
           STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
@@ -52,7 +57,6 @@ jobs:
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
 
       - name: Commit if changed
-        if: steps.noon.outputs.run == 'true'
         run: |
           if git diff --quiet run_miles.json; then
             echo "No new runs."

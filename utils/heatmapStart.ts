@@ -1,5 +1,6 @@
-import items from '../race_registry';
+import { allRaces } from '../race_registry';
 
-// The running heatmap starts on Jan 1 of the first race's year.
-const firstRace = items.flatMap((year) => year.links).map((race) => race.date).sort()[0];
+// The running heatmap starts on Jan 1 of the first race's year
+// (scripts/strava-sync.mjs mirrors this rule).
+const firstRace = allRaces.map((race) => race.date).sort()[0];
 export const HEATMAP_START = `${firstRace.slice(0, 4)}-01-01`;

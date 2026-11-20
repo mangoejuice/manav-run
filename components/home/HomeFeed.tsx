@@ -1,5 +1,5 @@
 import React from 'react';
-import items from '../../race_registry';
+import { allRaces } from '../../race_registry';
 import photoSets, { type Photo } from '../../photo_registry';
 import { usePhotosFlag } from '../../utils/usePhotosFlag';
 import { groupByYear } from '../../utils/groupByYear';
@@ -15,9 +15,12 @@ interface FeedEntry {
   photos?: Photo[];
 }
 
-const raceEntries: FeedEntry[] = items.flatMap((year) =>
-  year.links.map((race) => ({ id: race.id, date: race.date, title: race.children, href: race.href }))
-);
+const raceEntries: FeedEntry[] = allRaces.map((race) => ({
+  id: race.id,
+  date: race.date,
+  title: race.children,
+  href: race.href,
+}));
 
 const photoEntries: FeedEntry[] = photoSets.map((set) => ({
   id: set.id,

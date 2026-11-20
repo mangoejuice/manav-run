@@ -6,18 +6,15 @@
 // .env.local locally (see scripts/strava-auth.mjs) or environment variables in
 // CI (.github/workflows/strava-sync.yml). If Strava rotates the refresh token,
 // the new one is written back to .env.local; CI just warns.
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { ENV_FILE, readEnvFile, saveRefreshToken } from './env.mjs';
 
-const ENV_FILE = '.env.local';
 const OUT_FILE = 'run_miles.json';
 const RUN_TYPES = new Set(['Run', 'TrailRun', 'VirtualRun']);
 const METERS_PER_MILE = 1609.34;
 const PAGE_SIZE = 200;
 
-const envText = existsSync(ENV_FILE) ? readFileSync(ENV_FILE, 'utf8') : null;
-const fileEnv = Object.fromEntries(
-  (envText ?? '').split('\n').filter((l) => /^\w+=/.test(l)).map((l) => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1).trim()])
-);
+const fileEnv = readEnvFile();
 const env = { ...process.env, ...fileEnv };
 for (const key of ['STRAVA_CLIENT_ID', 'STRAVA_CLIENT_SECRET', 'STRAVA_REFRESH_TOKEN']) {
   if (!env[key]) {
@@ -46,7 +43,7 @@ if (!tokenRes.ok) {
 }
 if (token.refresh_token && token.refresh_token !== env.STRAVA_REFRESH_TOKEN) {
   if (fileEnv.STRAVA_REFRESH_TOKEN) {
-    writeFileSync(ENV_FILE, envText.replace(/^STRAVA_REFRESH_TOKEN=.*$/m, `STRAVA_REFRESH_TOKEN=${token.refresh_token}`));
+    saveRefreshToken(token.refresh_token);
     console.log(`Strava rotated the refresh token; saved the new one to ${ENV_FILE}.`);
   } else {
     // GitHub Actions annotation; the old token may stop working, so refresh the secret.

@@ -4,15 +4,11 @@
 //
 //   npm run strava-auth            prints the sign-in URL
 //   npm run strava-auth -- <code>  exchanges the code from the redirect URL
-import { readFileSync, writeFileSync } from 'node:fs';
+import { ENV_FILE, readEnvFile, saveRefreshToken } from './env.mjs';
 
-const ENV_FILE = '.env.local';
 const SCOPE = 'activity:read_all';
 
-const envText = readFileSync(ENV_FILE, 'utf8');
-const env = Object.fromEntries(
-  envText.split('\n').filter((l) => /^\w+=/.test(l)).map((l) => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1).trim()])
-);
+const env = readEnvFile();
 const { STRAVA_CLIENT_ID: clientId, STRAVA_CLIENT_SECRET: clientSecret } = env;
 if (!clientId || !clientSecret) {
   console.error(`Add STRAVA_CLIENT_ID and STRAVA_CLIENT_SECRET to ${ENV_FILE} first.`);
@@ -44,11 +40,7 @@ if (!res.ok || !data.refresh_token) {
   process.exit(1);
 }
 
-const line = `STRAVA_REFRESH_TOKEN=${data.refresh_token}`;
-const updated = /^STRAVA_REFRESH_TOKEN=.*$/m.test(envText)
-  ? envText.replace(/^STRAVA_REFRESH_TOKEN=.*$/m, line)
-  : `${envText.replace(/\n?$/, '\n')}${line}\n`;
-writeFileSync(ENV_FILE, updated);
+saveRefreshToken(data.refresh_token);
 
 console.log(`Saved STRAVA_REFRESH_TOKEN to ${ENV_FILE}. Next: npm run strava-sync`);
 

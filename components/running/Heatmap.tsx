@@ -1,10 +1,9 @@
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { type CSSProperties, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { formatLongDate } from '../../utils/formatDate';
+import { MONTH_NAMES, formatLongDate } from '../../utils/formatDate';
 
 import styles from './Heatmap.module.scss';
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 // Sun-Sat; blank rows still render so the pinned label column covers them when scrolled.
 const WEEKDAY_LABELS = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
 const DAY_ROW = 3; // grid rows 1-2 hold the year and month labels
@@ -17,7 +16,7 @@ function level(miles: number): number {
 
 const isoDate = (d: Date) => d.toISOString().slice(0, 10);
 
-export interface RaceDay {
+interface RaceDay {
   name: string;
   href: string;
   miles?: number;
@@ -75,16 +74,12 @@ export function Heatmap({ start, today, runs, races }: HeatmapProps) {
     if (current) setActiveYear(current[0]);
   }
 
+  // Jan 1 lands just right of the pinned label column (the scroller's scroll-padding).
   function scrollToYear(year: number) {
-    const el = scroller.current;
-    const target = yearOffsets().find(([y]) => y === year);
-    if (!el || !target) return;
+    const label = scroller.current?.querySelector(`[data-year="${year}"]`);
+    if (!label) return;
     userScrolled.current = true;
-    // Line Jan 1 up just right of the pinned label column and the gap it covers.
-    const grid = el.firstElementChild as HTMLElement;
-    const labels = el.querySelector<HTMLElement>(`.${styles.weekday}`).offsetWidth;
-    const gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
-    el.scrollTo({ left: target[1] - labels - gap, behavior: 'smooth' });
+    label.scrollIntoView({ inline: 'start', block: 'nearest', behavior: 'smooth' });
   }
 
   // Stay pinned to the most recent weeks as the grid lays out or resizes (cell
@@ -118,22 +113,24 @@ export function Heatmap({ start, today, runs, races }: HeatmapProps) {
       const gridColumn = Math.floor(i / 7) + 2;
       weeks = gridColumn - 1;
 
-      if (d.getUTCDate() === 1 || date === start) {
-        if (d.getUTCMonth() === 0 || date === start) {
-          labels.push(
-            <span
-              key={`y${date}`}
-              className={styles.year}
-              style={{ gridColumn, gridRow: 1 }}
-              data-year={d.getUTCFullYear()}
-            >
-              {d.getUTCFullYear()}
-            </span>
-          );
-        }
+      const isFirstDay = date === start;
+      const newMonth = isFirstDay || d.getUTCDate() === 1;
+      if (newMonth && (isFirstDay || d.getUTCMonth() === 0)) {
+        labels.push(
+          <span
+            key={`y${date}`}
+            className={styles.year}
+            style={{ gridColumn, gridRow: 1 }}
+            data-year={d.getUTCFullYear()}
+          >
+            {d.getUTCFullYear()}
+          </span>
+        );
+      }
+      if (newMonth) {
         labels.push(
           <span key={`m${date}`} className={styles.month} style={{ gridColumn, gridRow: 2 }}>
-            {MONTHS[d.getUTCMonth()]}
+            {MONTH_NAMES[d.getUTCMonth()]}
           </span>
         );
       }
@@ -189,12 +186,11 @@ export function Heatmap({ start, today, runs, races }: HeatmapProps) {
           updateActiveYear();
         }}
         onWheel={() => (userScrolled.current = true)}
-        onTouchStart={() => (userScrolled.current = true)}
         onPointerDown={() => (userScrolled.current = true)}
       >
         <div
           className={styles.grid}
-          style={{ gridTemplateColumns: `32px repeat(${grid.weeks}, var(--cell))` }}
+          style={{ '--weeks': grid.weeks } as CSSProperties}
           onPointerOver={handlePointerOver}
         >
           {grid.labels}
