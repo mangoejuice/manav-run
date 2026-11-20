@@ -41,8 +41,9 @@ function collectHeadings(node, sections = []) {
   return sections;
 }
 
-function getRaceID(filePath) {
-  return filePath.split("/").filter(Boolean)[0]
+// Race write-ups live at pages/running/<id>.md; other Markdoc pages aren't races.
+function getRaceID(filePath: string): string | null {
+  return /^\/running\/([^/]+)\.md$/.exec(filePath)?.[1] ?? null;
 }
 
 export type MyAppProps = MarkdocNextJsPageProps
@@ -71,9 +72,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     if (markdoc.frontmatter.description) {
       description = markdoc.frontmatter.description;
     }
-    if (markdoc.file.path !== '/index.md') {
-      raceID = getRaceID(markdoc.file.path)
-    }
+    raceID = getRaceID(markdoc.file.path);
   }
 
   // // Removed SideNav for now

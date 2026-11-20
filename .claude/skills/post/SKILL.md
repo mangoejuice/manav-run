@@ -25,12 +25,12 @@ Collect:
 - **Date** — YYYY-MM-DD.
 - **Slug** — default `<date>-<short-kebab-name>`, matching existing ids like
   `2026-04-19-jersey-city-half` or `2025-11-02-nyc-marathon` (short form:
-  `half`, `marathon`, `5k`, `10k`, `4m`...). Becomes the id, the URL and the
-  page folder.
+  `half`, `marathon`, `5k`, `10k`, `4m`...). Becomes the id, the page's
+  filename and the URL (`/running/<slug>`).
 - **GPX file** — path to the exported .gpx (e.g. in ~/Downloads), or "later".
 
 Check before writing anything:
-- `pages/<slug>/` must not exist, and the slug/date must not already be in
+- `pages/running/<slug>.md` must not exist, and the slug/date must not already be in
   `race_registry.ts`.
 - If a GPX path was given, it must exist and contain `<trkpt`.
 
@@ -46,7 +46,7 @@ Create:
    ```ts
    {
        id: '<slug>',
-       href: '/<slug>',
+       href: '/running/<slug>',
        children: '<Race name>',
        gpxfile: '<Name>.gpx',
        date: '<YYYY-MM-DD>'
@@ -58,7 +58,7 @@ Create:
    - Within a group, entries are newest first; insert by date.
    - Match the file's 4-space indentation and trailing commas.
 
-3. **Page**: `pages/<slug>/index.md`:
+3. **Page**: `pages/running/<slug>.md`:
    ```md
    ---
    title: <Race name>
@@ -137,8 +137,8 @@ Finish with a short summary:
 - Every file created or changed, as clickable paths — **the markdown file
   first**, called out as where to write, with a line number pointing at where
   the body starts (the blank line under `### Training` for a race; the
-  "Start writing here." line for a post), e.g. `pages/<slug>/index.md:8`.
-- The preview URL, now live: `http://localhost:3000/<slug>` or
+  "Start writing here." line for a post), e.g. `pages/running/<slug>.md:8`.
+- The preview URL, now live: `http://localhost:3000/running/<slug>` or
   `http://localhost:3000/blog/<slug>`, and where the dev server is running
   (reused, Rex window, or background task).
 - Any follow-up left (drop in the GPX + `npm run race-stats`; flip `draft`
