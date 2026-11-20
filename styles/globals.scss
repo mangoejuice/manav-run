@@ -18,6 +18,18 @@ $desktop-font-size: 16px;
 $sidebar-width-tablet: 200px;
 $sidebar-width-desktop: 250px;
 
+// Colors
+$text-color: rgb(60, 66, 87); // body text (public/globals.css)
+
+// Blog posts: a centered column whose footnotes hang in the right margin at
+// $sidenote-breakpoint and up, with the column shifted left by $sidenote-shift
+// to balance them (1rem slack covers a scrollbar). Below it they open inline.
+$post-width: 42rem;
+$sidenote-width: 14rem;
+$sidenote-gap: 2.5rem;
+$sidenote-shift: 5rem;
+$sidenote-breakpoint: $post-width + 2 * ($sidenote-width + $sidenote-gap - $sidenote-shift) + 2 * $desktop-padding + 1rem;
+
 // Mixins for breakpoints
 @mixin mobile-only {
     @media (max-width: #{$mobile-breakpoint - 1px}) {
@@ -39,6 +51,18 @@ $sidebar-width-desktop: 250px;
 
 @mixin tablet-up {
     @media (min-width: #{$mobile-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin sidenotes-in-margin {
+    @media (min-width: #{$sidenote-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin sidenotes-inline {
+    @media (max-width: #{$sidenote-breakpoint - 0.01rem}) {
         @content;
     }
 }

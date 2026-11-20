@@ -2,9 +2,19 @@
 
 // A readable column; post pages have no race sidebars.
 .post {
-    max-width: 42rem;
+    max-width: $post-width;
     margin: 0 auto;
     padding-top: 2.5rem;
+    counter-reset: footnote; // numbers the post's footnotes (components/Footnote)
+
+    // With footnotes in the margin, nudge the column left so the text and
+    // notes sit balanced on the page.
+    @include sidenotes-in-margin {
+        &:has([data-sidenote]) {
+            position: relative;
+            left: -$sidenote-shift;
+        }
+    }
 
     @include mobile-only {
         padding-top: 1.5rem;

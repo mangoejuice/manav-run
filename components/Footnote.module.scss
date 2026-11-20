@@ -1,0 +1,79 @@
+@import '../styles/globals.scss';
+
+$light: rgba($text-color, 0.55);
+$fade: 0.15s;
+
+// Hovering the marker or its note (a descendant even when floated into the
+// margin) darkens both and draws the note's left border.
+.footnote:hover > * {
+    color: $text-color;
+    border-left-color: $text-color;
+}
+
+// Numbered with the `footnote` counter, reset per post (pages/blog/post.module.scss).
+.marker {
+    padding: 0 0.1em;
+    border: none;
+    background: none;
+    color: $light;
+    font: inherit;
+    font-size: 0.7em;
+    font-weight: 600;
+    line-height: 1;
+    vertical-align: super;
+    transition: color $fade;
+
+    &::after {
+        counter-increment: footnote;
+        content: counter(footnote);
+    }
+
+    @include sidenotes-inline {
+        cursor: pointer;
+    }
+}
+
+// Spans, not divs: the note sits inside the paragraph. The left padding
+// leaves room for the hover border in both layouts.
+.note {
+    padding-left: 0.75rem;
+    border-left: 2px solid transparent;
+    color: $light;
+    font-size: 0.875em;
+    line-height: 1.45;
+    transition: color $fade, border-color $fade;
+
+    &::before {
+        content: counter(footnote) '. ';
+        font-weight: 600;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    :global(p) {
+        margin: 0;
+    }
+
+    // In the margin, level with the marker's line.
+    @include sidenotes-in-margin {
+        display: block;
+        float: right;
+        clear: right;
+        width: $sidenote-width;
+        margin: 0.15rem (-($sidenote-width + $sidenote-gap)) 1rem 0;
+    }
+
+    // Hidden until the marker is tapped, then opens under the line.
+    @include sidenotes-inline {
+        display: none;
+        margin: 0.5rem 0 0.75rem;
+        padding-block: 0.5rem;
+        border-left-color: var(--border-color);
+
+        &.open {
+            display: block;
+        }
+    }
+}

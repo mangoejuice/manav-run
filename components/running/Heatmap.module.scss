@@ -1,6 +1,6 @@
 @import '../../styles/globals.scss';
 
-$text: rgb(60, 66, 87); // body text color (public/globals.css)
+$text: $text-color;
 $ink: #343a55; // darkest shade; also the tooltip and hover ring
 $label-width: 32px;
 $gap: 4px;

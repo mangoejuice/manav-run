@@ -106,6 +106,9 @@ Start writing here.
 
 Posts are Markdoc: `{% callout title="..." %}...{% /callout %}` and
 `docimage` work as on race pages; put images in `public/images/blog/<slug>/`.
+Footnotes go inline, right after the text they annotate, and show in the
+margin on wide screens (tap-to-open on phones):
+`Some claim.{% footnote %}The aside, *markdown* ok.{% /footnote %} More text.`
 
 ## 3. Start the dev server
 
