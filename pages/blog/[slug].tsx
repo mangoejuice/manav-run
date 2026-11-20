@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Markdoc from '@markdoc/markdoc';
+import { renderers } from '@markdoc/markdoc';
 import type { GetServerSideProps } from 'next';
 import { getFlagValues } from '../../flags';
 import { getPost, type Post } from '../../lib/blog';
@@ -33,7 +33,7 @@ export default function BlogPost({ post }: PostProps) {
         <h1 className={styles.title}>{post.title}</h1>
         <time dateTime={post.date} className={styles.date}>{formatLongDate(post.date)}</time>
       </header>
-      {Markdoc.renderers.react(post.content, React, { components: BLOG_COMPONENTS })}
+      {renderers.react(post.content, React, { components: BLOG_COMPONENTS })}
     </div>
   );
 }

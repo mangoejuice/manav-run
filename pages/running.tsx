@@ -5,13 +5,12 @@ import { allRaces } from '../race_registry';
 import raceStats from '../race_stats.json';
 import runMiles from '../run_miles.json';
 import { getFlagValues } from '../flags';
-import { groupByYear } from '../utils/groupByYear';
 import { HEATMAP_START } from '../utils/heatmapStart';
 import { FeedRow } from '../components/home/FeedRow';
 import { RaceTimes, RaceTimesHeader } from '../components/running/RaceTimes';
 import { Heatmap } from '../components/running/Heatmap';
+import { YearFeed } from '../components/home/YearFeed';
 
-import styles from '../components/home/HomeFeed.module.scss';
 import runningStyles from './running.module.scss';
 
 interface RunningProps {
@@ -34,15 +33,13 @@ const RACE_DAYS = Object.fromEntries(
   ])
 );
 
-const YEARS = groupByYear(
-  allRaces.map((race) => ({
-    id: race.id,
-    date: race.date,
-    title: race.children,
-    href: race.href,
-    stats: raceStats[race.gpxfile],
-  }))
-);
+const RACES = allRaces.map((race) => ({
+  id: race.id,
+  date: race.date,
+  title: race.children,
+  href: race.href,
+  stats: raceStats[race.gpxfile],
+}));
 
 export default function Running({ today }: RunningProps) {
   return (
@@ -51,23 +48,16 @@ export default function Running({ today }: RunningProps) {
         <title>Running · manav.run</title>
       </Head>
       <Heatmap start={HEATMAP_START} today={today} runs={runMiles} races={RACE_DAYS} />
-      <div className={styles.feed}>
-        {YEARS.map(([year, races]) => (
-          <section key={year} className={styles.year}>
-            <div className={runningStyles.yearHeader}>
-              <h2 className={styles.yearHeading}>{year}</h2>
-              <RaceTimesHeader />
-            </div>
-            <ul className={styles.rows}>
-              {races.map(({ id, stats, ...race }) => (
-                <FeedRow key={id} {...race}>
-                  {stats && <RaceTimes {...stats} />}
-                </FeedRow>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+      <YearFeed
+        entries={RACES}
+        headerExtra={<RaceTimesHeader />}
+        headerClassName={runningStyles.yearHeader}
+        renderRow={({ id, stats, ...race }) => (
+          <FeedRow key={id} {...race}>
+            {stats && <RaceTimes {...stats} />}
+          </FeedRow>
+        )}
+      />
     </>
   );
 }

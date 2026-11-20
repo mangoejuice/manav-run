@@ -16,18 +16,25 @@ export const blogFlag = flag<boolean>({
   defaultValue: false,
 });
 
-export type FlagValues = { photos: boolean; blog: boolean };
+// Adding a flag: define it above and list it here.
+const FLAGS = { photos: photosFlag, blog: blogFlag };
+
+export type FlagValues = Record<keyof typeof FLAGS, boolean>;
 
 // A Pages Router request (getServerSideProps / API routes), as `evaluate` accepts it.
 type FlagRequest = NonNullable<Parameters<typeof evaluate>[1]>;
 
 export async function getFlagValues(req: FlagRequest): Promise<FlagValues> {
   // Local dev can't reach Vercel Flags without `vercel link` + `vercel env pull`,
-  // so allow PHOTOS_FLAG_OVERRIDE / BLOG_FLAG_OVERRIDE=true|false in .env.local
-  // (when either is set, an unset one reads false).
-  const { PHOTOS_FLAG_OVERRIDE: photos, BLOG_FLAG_OVERRIDE: blog } = process.env;
-  if (process.env.NODE_ENV === 'development' && (photos || blog)) {
-    return { photos: photos === 'true', blog: blog === 'true' };
+  // so allow <NAME>_FLAG_OVERRIDE=true|false (e.g. BLOG_FLAG_OVERRIDE) in
+  // .env.local. When any is set, flags without one read their default.
+  if (process.env.NODE_ENV === 'development') {
+    const overrides = Object.keys(FLAGS).map((key) => [key, process.env[`${key.toUpperCase()}_FLAG_OVERRIDE`]]);
+    if (overrides.some(([, value]) => value)) {
+      return Object.fromEntries(
+        overrides.map(([key, value]) => [key, value ? value === 'true' : FLAGS[key].defaultValue])
+      ) as FlagValues;
+    }
   }
-  return evaluate({ photos: photosFlag, blog: blogFlag }, req);
+  return evaluate(FLAGS, req);
 }

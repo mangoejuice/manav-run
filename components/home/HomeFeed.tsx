@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { allRaces } from '../../race_registry';
 import photoSets, { type Photo } from '../../photo_registry';
 import type { PostSummary } from '../../lib/blog';
 import { useFlags } from '../../utils/useFlags';
-import { groupByYear } from '../../utils/groupByYear';
 import { FeedRow } from './FeedRow';
+import { YearFeed } from './YearFeed';
 
 import styles from './HomeFeed.module.scss';
 
@@ -33,49 +33,46 @@ const photoEntries: FeedEntry[] = photoSets.map((set) => ({
   photos: set.photos,
 }));
 
-// Blog posts live on the server (content/blog), so the feed fetches them once
-// the `blog` flag reads on.
-function usePostEntries(enabled: boolean): FeedEntry[] {
-  const [posts, setPosts] = useState<PostSummary[]>([]);
+// Blog posts live on the server (content/blog). Fetched once per page load,
+// alongside the flags rather than after them; /api/posts 404s when the
+// `blog` flag is off, which leaves the list empty.
+let postsRequest: Promise<FeedEntry[]> | null = null;
+
+function fetchPostEntries(): Promise<FeedEntry[]> {
+  postsRequest ??= fetch('/api/posts')
+    .then((res) => (res.ok ? res.json() : []))
+    .then((posts: PostSummary[]) =>
+      posts.map(({ slug, date, title, href }) => ({ id: `post-${slug}`, date, title, href, label: 'Post' as const }))
+    )
+    .catch(() => []);
+  return postsRequest;
+}
+
+function usePostEntries(): FeedEntry[] {
+  const [entries, setEntries] = useState<FeedEntry[]>([]);
   useEffect(() => {
-    if (!enabled) return;
     let active = true;
-    fetch('/api/posts')
-      .then((res) => (res.ok ? res.json() : []))
-      .then((list: PostSummary[]) => active && setPosts(list))
-      .catch(() => {});
+    fetchPostEntries().then((list) => active && setEntries(list));
     return () => { active = false; };
-  }, [enabled]);
-  return useMemo(
-    () => posts.map((post) => ({ id: `post-${post.slug}`, date: post.date, title: post.title, href: `/blog/${post.slug}`, label: 'Post' as const })),
-    [posts]
-  );
+  }, []);
+  return entries;
 }
 
 // Every race, plus photo sets when the `photos` flag is on and blog posts when
 // the `blog` flag is on.
 export function HomeFeed() {
   const flags = useFlags();
-  const postEntries = usePostEntries(flags.blog);
-  const years = useMemo(
-    () => groupByYear([...raceEntries, ...(flags.photos ? photoEntries : []), ...(flags.blog ? postEntries : [])]),
-    [flags.photos, flags.blog, postEntries]
-  );
+  const postEntries = usePostEntries();
+  const entries = [...raceEntries, ...(flags.photos ? photoEntries : []), ...(flags.blog ? postEntries : [])];
 
   return (
-    <div className={styles.feed}>
-      {years.map(([year, entries]) => (
-        <section key={year} className={styles.year}>
-          <h2 className={styles.yearHeading}>{year}</h2>
-          <ul className={styles.rows}>
-            {entries.map(({ id, label, ...entry }) => (
-              <FeedRow key={id} {...entry}>
-                {label && <span className={styles.kind}>{label}</span>}
-              </FeedRow>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </div>
+    <YearFeed
+      entries={entries}
+      renderRow={({ id, label, ...entry }) => (
+        <FeedRow key={id} {...entry}>
+          {label && <span className={styles.kind}>{label}</span>}
+        </FeedRow>
+      )}
+    />
   );
 }
