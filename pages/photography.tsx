@@ -19,7 +19,6 @@ export default function Photography() {
       <Head>
         <title>Photography · manav.run</title>
       </Head>
-      <h1>Photography</h1>
       <PhotoWall sets={photoSets} />
     </>
   );

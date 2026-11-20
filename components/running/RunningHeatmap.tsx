@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heatmap, HeatmapLegend, type RaceDay } from './Heatmap';
+import { Heatmap, type RaceDay } from './Heatmap';
 
 import styles from './RunningHeatmap.module.scss';
 
@@ -15,7 +15,6 @@ export function RunningHeatmap({ start, today, runs, races }: RunningHeatmapProp
   return (
     <section className={styles.container}>
       <Heatmap start={start} today={today} runs={runs} races={races} />
-      <HeatmapLegend />
     </section>
   );
 }

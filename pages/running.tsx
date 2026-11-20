@@ -51,7 +51,6 @@ export default function Running({ today }: RunningProps) {
       <Head>
         <title>Running · manav.run</title>
       </Head>
-      <h1>Running</h1>
       <RunningHeatmap start={HEATMAP_START} today={today} runs={runMiles} races={RACE_DAYS} />
       <div className={styles.feed}>
         {YEARS.map(([year, races]) => (

@@ -50,10 +50,11 @@ export function Heatmap({ start, today, runs, races }: HeatmapProps) {
 
   const years = useMemo(() => {
     const list = [];
-    for (let y = Number(today.slice(0, 4)); y >= Number(start.slice(0, 4)); y--) list.push(y);
+    // Oldest first, matching the strip's left-to-right direction.
+    for (let y = Number(start.slice(0, 4)); y <= Number(today.slice(0, 4)); y++) list.push(y);
     return list;
   }, [start, today]);
-  const [activeYear, setActiveYear] = useState(years[0]);
+  const [activeYear, setActiveYear] = useState(years[years.length - 1]);
 
   // Where each year's Jan 1 column starts, in scroll coordinates.
   function yearOffsets(): [number, number][] {
@@ -180,19 +181,6 @@ export function Heatmap({ start, today, runs, races }: HeatmapProps) {
 
   return (
     <div ref={wrapper} className={styles.wrapper} onPointerLeave={() => setHover(null)}>
-      <div className={styles.years}>
-        {years.map((year) => (
-          <button
-            key={year}
-            type="button"
-            className={`${styles.yearButton} ${year === activeYear ? styles.activeYear : ''}`}
-            aria-pressed={year === activeYear}
-            onClick={() => scrollToYear(year)}
-          >
-            {year}
-          </button>
-        ))}
-      </div>
       <div
         ref={scroller}
         className={styles.scroller}
@@ -220,6 +208,29 @@ export function Heatmap({ start, today, runs, races }: HeatmapProps) {
           {grid.cells}
         </div>
       </div>
+      {/* Year pills (scroll to that year) and the shade legend. */}
+      <div className={styles.footer}>
+        <div className={styles.years}>
+          {years.map((year) => (
+            <button
+              key={year}
+              type="button"
+              className={`${styles.yearButton} ${year === activeYear ? styles.activeYear : ''}`}
+              aria-pressed={year === activeYear}
+              onClick={() => scrollToYear(year)}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
+        <span className={styles.legend}>
+          Less
+          {[0, 1, 2, 3, 4].map((n) => (
+            <span key={n} className={`${styles.swatch} ${styles[`level${n}`]}`} />
+          ))}
+          More
+        </span>
+      </div>
       {hover && (
         <>
           <span
@@ -237,23 +248,6 @@ export function Heatmap({ start, today, runs, races }: HeatmapProps) {
           </div>
         </>
       )}
-    </div>
-  );
-}
-
-export function HeatmapLegend() {
-  return (
-    <div className={styles.legend}>
-      <span className={styles.legendItem}>
-        <span className={`${styles.swatch} ${styles.race}`} /> Race day
-      </span>
-      <span className={styles.legendItem}>
-        Less
-        {[0, 1, 2, 3, 4].map((n) => (
-          <span key={n} className={`${styles.swatch} ${styles[`level${n}`]}`} />
-        ))}
-        More
-      </span>
     </div>
   );
 }
