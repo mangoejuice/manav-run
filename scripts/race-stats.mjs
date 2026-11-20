@@ -1,4 +1,4 @@
-// Computes moving time and pace (per mile) for every GPX file in public/gpx-files and
+// Computes distance, moving time and pace (per mile) for every GPX file in public/gpx-files and
 // writes race_stats.json. Mirrors leaflet-gpx (which the race pages use), so the
 // numbers match: 3D haversine distance, and gaps of 15s or more don't count as
 // moving time. Run with `npm run race-stats` after adding a GPX file.
@@ -45,7 +45,8 @@ function stats(gpx) {
       if (timeDiff < MAX_POINT_INTERVAL_MS) movingMs += timeDiff;
     }
   }
-  return { movingMs, paceMs: Math.round(movingMs / (meters / 1609.34)) };
+  const miles = meters / 1609.34;
+  return { distanceMi: +miles.toFixed(2), movingMs, paceMs: Math.round(movingMs / miles) };
 }
 
 const out = {};

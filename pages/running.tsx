@@ -7,37 +7,52 @@ import { getFlagValues } from '../flags';
 import { groupByYear } from '../utils/groupByYear';
 import { FeedRow } from '../components/home/FeedRow';
 import { RaceTimes, RaceTimesHeader } from '../components/running/RaceTimes';
+import { RunningHeatmap } from '../components/running/RunningHeatmap';
 
 import styles from '../components/home/HomeFeed.module.scss';
 import runningStyles from './running.module.scss';
 
+interface RunningProps {
+  today: string; // YYYY-MM-DD in New York, so the heatmap blanks future days
+}
+
 // 404 unless the `photos` flag is on.
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps<RunningProps> = async ({ req }) => {
   if (!(await getFlagValues(req)).photos) {
     return { notFound: true };
   }
-  return { props: {} };
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  return { props: { today } };
 };
 
+const raceList = items.flatMap((year) => year.links);
+const RACE_DAYS = Object.fromEntries(
+  raceList.map((race) => [
+    race.date,
+    { name: race.children, href: race.href, miles: raceStats[race.gpxfile]?.distanceMi },
+  ])
+);
+// Heatmap starts on Jan 1 of the first race's year.
+const HEATMAP_START = `${raceList.map((race) => race.date).sort()[0].slice(0, 4)}-01-01`;
+
 const YEARS = groupByYear(
-  items.flatMap((year) =>
-    year.links.map((race) => ({
-      id: race.id,
-      date: race.date,
-      title: race.children,
-      href: race.href,
-      stats: raceStats[race.gpxfile],
-    }))
-  )
+  raceList.map((race) => ({
+    id: race.id,
+    date: race.date,
+    title: race.children,
+    href: race.href,
+    stats: raceStats[race.gpxfile],
+  }))
 );
 
-export default function Running() {
+export default function Running({ today }: RunningProps) {
   return (
     <>
       <Head>
         <title>Running · manav.run</title>
       </Head>
       <h1>Running</h1>
+      <RunningHeatmap start={HEATMAP_START} today={today} races={RACE_DAYS} />
       <div className={styles.feed}>
         {YEARS.map(([year, races]) => (
           <section key={year} className={styles.year}>

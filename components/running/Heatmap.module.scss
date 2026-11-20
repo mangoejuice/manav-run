@@ -1,0 +1,160 @@
+@import '../../styles/globals.scss';
+
+// Positioning context for the tooltip, which lives outside the scroller so it
+// isn't clipped.
+.wrapper {
+    position: relative;
+}
+
+// Year pills, top right; clicking one scrolls the strip to that year.
+.years {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.yearButton {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+
+    &:hover:not(.activeYear) {
+        border-color: rgba(60, 66, 87, 0.5);
+    }
+}
+
+.activeYear {
+    border-color: rgba(60, 66, 87, 1);
+    background: rgba(60, 66, 87, 1);
+    color: white;
+    font-weight: 600;
+}
+
+$label-width: 32px;
+$gap: 4px;
+
+// Scrolls sideways through the full history. Cells are sized from this box's
+// width so one year (53 weeks) fills it on desktop; phones keep a 12px minimum.
+.scroller {
+    container-type: inline-size;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+}
+
+.grid {
+    --cell: max(12px, min(22px, calc((100cqw - #{$label-width}) / 53 - #{$gap})));
+    display: grid;
+    gap: $gap;
+    width: max-content;
+    font-size: 0.75rem;
+}
+
+.year {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.month {
+    padding-bottom: 2px;
+    white-space: nowrap;
+    opacity: 0.7;
+}
+
+// Pinned label column while the grid scrolls sideways. The shadow paints over
+// the gap after it so nothing peeks out between the labels and the first column.
+.weekday,
+.corner {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    align-self: stretch;
+    background: var(--background-color);
+    box-shadow: $gap 0 0 var(--background-color);
+}
+
+.weekday {
+    display: flex;
+    align-items: center;
+    padding-right: 6px;
+    line-height: 1;
+    color: rgba(60, 66, 87, 0.7);
+}
+
+.cell {
+    aspect-ratio: 1;
+    border-radius: 3px;
+}
+
+// Only days with a run or race are hoverable.
+.cell[data-date] {
+    cursor: pointer;
+}
+
+.ring {
+    position: absolute;
+    z-index: 2;
+    box-sizing: content-box;
+    margin: -3px 0 0 -3px;
+    border: 2px solid #343a55;
+    border-radius: 4px;
+    padding: 1px;
+    pointer-events: none;
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 8px;
+    background: #343a55;
+    box-shadow: 0 4px 12px rgba(52, 58, 85, 0.25);
+    color: white;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translateY(calc(-100% - 8px));
+}
+
+.tooltipTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.tooltipDate {
+    font-size: 0.8rem;
+    opacity: 0.75;
+}
+
+.level0 { background: #eef0f4; }
+.level1 { background: #c9d1e3; }
+.level2 { background: #8fa0c7; }
+.level3 { background: #5d6fa3; }
+.level4 { background: #343a55; }
+.race { background: #c2410c; }
+
+.legend {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.swatch {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+}
