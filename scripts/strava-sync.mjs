@@ -63,7 +63,11 @@ for (let page = 1; ; page++) {
     headers: { Authorization: `Bearer ${token.access_token}` },
   });
   if (!res.ok) {
-    console.error(`Strava activities request failed (HTTP ${res.status}).`);
+    // Strava's error body names the problem (e.g. a missing activity:read permission); no secrets in it.
+    console.error(`Strava activities request failed (HTTP ${res.status}): ${await res.text()}`);
+    if (res.status === 401) {
+      console.error('The refresh token lacks activity access. Use the STRAVA_REFRESH_TOKEN from `npm run strava-auth`, not the token on Strava\'s API settings page.');
+    }
     process.exit(1);
   }
   const activities = await res.json();
